@@ -34,8 +34,9 @@
         <h3 class="text-base font-semibold mb-2">Enlaces</h3>
         <ul class="space-y-1">
           <li><a href="#inicio" class="hover:underline">Inicio</a></li>
-          <li><a href="#sobre-mi" class="hover:underline">Sobre mí</a></li>
-          <li><a href="#contacto" class="hover:underline">Contacto</a></li>
+          <li><a href="#about" class="hover:underline">Sobre mí</a></li>
+          <li><a href="#project" class="hover:underline">Proyectos</a></li>
+          <li><a href="#contact" class="hover:underline">Contacto</a></li>
         </ul>
       </div>
     </div>

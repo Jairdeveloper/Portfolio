@@ -1,9 +1,9 @@
 <template>
   <Header />
-  <Hero />
-  <about />
-  <Projects /> 
-  <Contacto />
+  <Hero id="portfolio"/>
+  <about id="about"/>
+  <Projects id="project"/> 
+  <Contacto id="contact"/>
   <Foother  />
 </template>
 
