@@ -21,7 +21,6 @@
     "postcss": "^8.4.24",
     "tailwindcss": "^3.4.1",
     "vite": "^6.3.5",
-    "vite-plugin-node-polyfills": "^0.23.0",
     "vite-plugin-svg-loader": "^1.0.0"
   }
 }
