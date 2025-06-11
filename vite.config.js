@@ -7,5 +7,9 @@ export default defineConfig({
   base: '/Portfolio/', 
   plugins: [
     vue(),
+    NodePolyfills({
+      // Habilita polyfills para Node.js
+      crypto: true,
+    }),
   ],
 })
