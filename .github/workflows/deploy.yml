@@ -3,34 +3,38 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Ejecuta el flujo de trabajo cuando haya un push en la rama main
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Paso 1: Checkout del código
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Paso 2: Configurar Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 23.4.0  # Cambia la versión si tu proyecto requiere otra
+          node-version: 20.x
 
-      # Paso 3: Instalar dependencias
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit --progress=false
+        run: npm ci
 
-      # Paso 4: Construir el proyecto
       - name: Build project
         run: npm run build
 
-      # Paso 5: Desplegar en GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+            
