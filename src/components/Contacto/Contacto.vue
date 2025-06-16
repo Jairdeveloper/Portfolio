@@ -5,7 +5,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <!-- Imagen -->
       <div>
-        <img src="../../assets/Sin título.png" alt="Contacto" class="rounded shadow-lg" />
+        <img src="" alt="Contacto" class="rounded shadow-lg" />
       </div>
       <!-- Formulario -->
       <div>

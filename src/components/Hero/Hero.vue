@@ -10,7 +10,7 @@
             </div>
         </div>
         <div>
-            <img src="../../assets/Sin título.png" alt="">
+            <img src="" alt="">
         </div>
     </section>
 </template>
