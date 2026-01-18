@@ -1,7 +1,7 @@
 <template>
   <Header />
   <Hero id="portfolio"/>
-  <about id="about"/>
+  <About id="about"/>
   <Blog />
   <Projects id="project"/> 
   <Contacto id="contact"/>
@@ -16,4 +16,5 @@ import Blog from '../components/blog/blog.vue'
 import Projects from '../components/Projects/Projects.vue'
 import Foother from '../components/Foother/Foother.vue'
 import Contacto from '../components/Contacto/Contacto.vue'
+
 </script>
