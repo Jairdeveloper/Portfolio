@@ -119,7 +119,7 @@ export default {
       ],
       newProject: {
         title: "",
-        image: "",
+        image: "https://picsum.photos/400/200?random",
         description: "",
         url: "",
       },
