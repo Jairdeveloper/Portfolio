@@ -16,10 +16,4 @@ import Blog from '../components/blog/blog.vue'
 import Projects from '../components/Projects/Projects.vue'
 import Foother from '../components/Foother/Foother.vue'
 import Contacto from '../components/Contacto/Contacto.vue'
-
-export default{
-  components:{
-    Blog
-  }
-};
 </script>
