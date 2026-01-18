@@ -20,3 +20,32 @@
         </div>
     </section>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+                posts: [
+                    {
+                        id: 1,
+                        title: 'Mi primer post en el blog',
+                        excerpt: 'Este es un resumen de mi primer post en el blog. Aquí hablo sobre mis experiencias como desarrollador frontend.',
+                        url: '#'
+                    },
+                    {
+                        id: 2,
+                        title: 'Aprendiendo Vue.js',
+                        excerpt: 'En este post comparto mis aprendizajes y recursos sobre Vue.js, un framework progresivo para construir interfaces de usuario.',
+                        url: '#'
+                    },
+                    {
+                        id: 3,
+                        title: 'Consejos para mejorar tu portafolio',
+                        excerpt: 'Aquí te doy algunos consejos prácticos para mejorar tu portafolio y atraer más clientes o empleadores.',
+                        url: '#'
+                    }
+                ]
+            };
+        }
+    };        
+</script>
