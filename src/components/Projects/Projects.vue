@@ -111,10 +111,13 @@ export default {
     return {
       projects: [
         {
-          title: "Proyecto de ejemplo",
+          title: "Food finder",
           image: "https://picsum.photos/400/200?random=1",
-          description: "Descripción breve del proyecto de ejemplo.",
-          url: "https://example.com",
+          description: "The Food Finder application shows a list of restaurants and their locations. 
+                        The user can click  these to see additional details about each location. In 
+                        addition, they can log in to the app with their GitHub accounts by using 
+                        OAuth so that they can maintain a wish list of locations.Descripción breve del proyecto de ejemplo.",
+          url: "https://foodfinder-fjpa4w2uc-zped08s-projects.vercel.app/",
         },
       ],
       newProject: {
