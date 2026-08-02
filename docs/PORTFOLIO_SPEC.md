@@ -77,11 +77,11 @@ experimentando — pero detrás de una rama, no en lo que la gente ve al entrar 
 
 ## 2. Público objetivo
 
-| Perfil | Qué busca al entrar | Qué debe encontrar |
-|---|---|---|
-| Reclutador / responsable de RRHH | Evidencia rápida de habilidades y seriedad, CV descargable | Resumen claro en 5 segundos, stack tecnológico real, CV actualizado, forma fácil de contactar |
-| Cliente freelance potencial | Pruebas de trabajo entregado, forma de contactar | Proyectos reales con resultado/capturas, testimonios si existen, formulario de contacto que funcione |
-| Otro desarrollador (revisando el código en GitHub) | Calidad de código, buenas prácticas | Código sin bugs evidentes, sin credenciales hardcodeadas, estructura consistente |
+| Perfil                                             | Qué busca al entrar                                        | Qué debe encontrar                                                                                   |
+| -------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Reclutador / responsable de RRHH                   | Evidencia rápida de habilidades y seriedad, CV descargable | Resumen claro en 5 segundos, stack tecnológico real, CV actualizado, forma fácil de contactar        |
+| Cliente freelance potencial                        | Pruebas de trabajo entregado, forma de contactar           | Proyectos reales con resultado/capturas, testimonios si existen, formulario de contacto que funcione |
+| Otro desarrollador (revisando el código en GitHub) | Calidad de código, buenas prácticas                        | Código sin bugs evidentes, sin credenciales hardcodeadas, estructura consistente                     |
 
 Los tres perfiles comparten un mismo requisito silencioso: **que nada se vea roto**. Un
 enlace social que va a `twitter.com` en vez de tu perfil, o una imagen vacía, cuesta más
@@ -111,12 +111,14 @@ La estructura de secciones actual es correcta y no necesita cambiar. Lo que nece
 una:
 
 ### Header
+
 - Corregir los anclas de navegación para que apunten a los `id` reales de cada sección
   (ver `OBSERVATIONS.md` — hoy "Inicio" no lleva a ningún lado).
 - Considerar un menú responsive (hamburguesa) para pantallas pequeñas; hoy el `nav` no
   tiene comportamiento mobile.
 
 ### Hero
+
 - Mensaje de una frase, específico: qué tipo de desarrollador eres y qué problema
   resuelves (evitar frases genéricas de plantilla tipo "ayudándote a mejorar tu presencia
   digital" si no es literalmente tu propuesta de valor).
@@ -127,6 +129,7 @@ una:
   bajo el `base: '/Portfolio/'` de producción.
 
 ### Sobre mí (About)
+
 - Reemplazar los bloques duplicados de "Programador independiente / 2022 - actualidad" en
   Experiencia **y** Formación (son copias del mismo texto) con datos reales: empleos,
   estudios/cursos, certificaciones.
@@ -136,6 +139,7 @@ una:
 - El idioma (Inglés, barra al 50%) — igual, decidir si refleja tu nivel real o se quita.
 
 ### Proyectos
+
 - Mostrar proyectos reales terminados (o en progreso, marcados como tal), con: qué
   problema resolvían, qué hiciste tú específicamente, stack usado, y un link funcionando
   (demo y/o repo).
@@ -145,6 +149,7 @@ una:
   `OBSERVATIONS.md` para la recomendación concreta.
 
 ### Blog
+
 - Decisión pendiente (ver §10, Fase 2): si vas a mantener un blog activo, vale la pena
   como muestra de comunicación técnica y SEO (contenido nuevo indexable). Si no vas a
   escribir con regularidad, un blog con 3 posts falsos y enlaces `href="#"` resta más
@@ -152,6 +157,7 @@ una:
   con posts reales aunque sean pocos.
 
 ### Contacto
+
 - Mantener EmailJS (funciona bien para sitios estáticos sin backend), pero mover
   Service ID / Template ID / Public Key a variables de entorno en vez de tenerlos
   hardcodeados en el componente.
@@ -160,6 +166,7 @@ una:
 - Imagen vacía junto al formulario — mismo caso que el Hero.
 
 ### Footer
+
 - Enlaces sociales deben apuntar a tus perfiles reales, no a `twitter.com`/`github.com`/
   `linkedin.com` genéricos.
 - Corregir el `name: "Contacto"` interno del componente (bug de copiar/pegar, no afecta
@@ -270,6 +277,7 @@ portfolio".
 ## 10. Roadmap por fases
 
 ### Fase 1 — Corrección y contenido real (prioridad alta)
+
 - Corregir anclas de navegación rotas (Header/Footer → secciones).
 - Reemplazar contenido de relleno en "Sobre mí" con datos reales.
 - Reemplazar el proyecto de ejemplo con 2–4 proyectos reales.
@@ -280,6 +288,7 @@ portfolio".
 - Decidir el destino del Blog (mantener con contenido real, o retirar por ahora).
 
 ### Fase 2 — Acabado profesional (prioridad media)
+
 - SEO: título, descripción, Open Graph, favicon, `lang="es"`.
 - Accesibilidad: `alt` en todas las imágenes, estados de foco visibles, contraste.
 - Responsive: menú mobile en el Header.
@@ -287,6 +296,7 @@ portfolio".
 - Aplicar `docs/LINTING_RECOMMENDATIONS.md` (ESLint + Prettier).
 
 ### Fase 3 — Opcional / si sobra tiempo
+
 - Dominio propio en vez de `github.io` (mejora percepción profesional).
 - Analítica básica (Plausible/GA) para saber si el link se está usando.
 - Modo oscuro.

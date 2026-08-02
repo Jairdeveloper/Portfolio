@@ -40,12 +40,14 @@ contenido de Fase 0, sino de tu criterio:
 ## Tareas completadas por completo
 
 ### 1.1 — Anclas de navegación corregidas
+
 - `src/views/Home.vue`: `<Hero id="portfolio"/>` → `<Hero id="inicio"/>`.
 - `src/components/Header/Header.vue`: `href="#Inicio"` → `href="#inicio"`.
 - `Foother.vue` ya usaba `#inicio` (minúscula) — no requería cambio.
 - **Verificado:** los tres coinciden ahora en `#inicio`; `npm run build` no reporta errores.
 
 ### 1.6 — Formulario público eliminado + limpieza de código muerto de Supabase
+
 - `src/components/Projects/Projects.vue`: se quitó el `<form>` de "Añadir proyecto" y el
   estado/métodos asociados (`newProject`, `addProject`). El array `projects` (con el
   proyecto de ejemplo "Food finder") queda intacto, marcado con TODO para 1.5.
@@ -53,9 +55,10 @@ contenido de Fase 0, sino de tu criterio:
   vista) y **`src/composables/supabase.js`** (credenciales placeholder, sin uso real).
 - Se corrió `npm uninstall @supabase/supabase-js` — ya no aparece en `package.json`.
 - **Verificado:** `grep -rn "supabase" src/ package.json` no devuelve nada; `npm run
-  build` compila sin imports rotos.
+build` compila sin imports rotos.
 
 ### 1.10 — Credenciales de EmailJS movidas a variables de entorno
+
 - Se creó `.env` (con tus valores reales actuales, **no versionado** — ya está en
   `.gitignore`) y `.env.example` (versionado, con placeholders, documenta qué variables
   hacen falta).
@@ -69,6 +72,7 @@ contenido de Fase 0, sino de tu criterio:
   para funcionar desde el navegador).
 
 ### 1.11 — Honeypot anti-spam añadido
+
 - `Contacto.vue`: se añadió un campo oculto (`empresa`, con `class="hidden"` +
   `aria-hidden` + `tabindex="-1"`, invisible y excluido de teclado/lectores de pantalla)
   que un humano nunca completa. Si `handleSubmit` detecta que llegó con contenido, aborta
@@ -77,6 +81,7 @@ contenido de Fase 0, sino de tu criterio:
   normal del formulario (se resetea junto con el resto de campos tras un envío exitoso).
 
 ### 1.2 — "Sobre mí" reestructurado (parcialmente, ver pendientes)
+
 - Se reemplazaron las barras de progreso arbitrarias (Inglés 50%, HTML/CSS/JS 66%) por:
   - Una lista simple de tecnologías en pills (`HTML5`, `CSS`, `JavaScript`, `Vue 3`,
     `Tailwind CSS`) — estas sí son reales (son literalmente el stack del proyecto), no
@@ -94,6 +99,7 @@ contenido de Fase 0, sino de tu criterio:
   como placeholder si por accidente llegara a producción.
 
 ### 1.9 — Blog rediseñado
+
 - Contenedor alineado a la misma convención visual que Proyectos/Contacto
   (`section.p-6.max-w-5xl.mx-auto`, encabezado `text-3xl font-semibold border-b pb-2`) en
   vez del estilo distinto que tenía antes (`bg-gray-100`, título centrado) — consistencia
@@ -115,13 +121,13 @@ Estas requieren datos que **tú** estás recopilando — no se inventó contenid
 comentario `TODO (Fase 0 pendiente)` en cada punto exacto del código, referenciando la
 tarea correspondiente del plan:
 
-| Tarea | Archivo | Qué falta |
-|---|---|---|
-| 1.3 | `Hero.vue` (frase del `<h1>`) | Tu frase de posicionamiento real |
-| 1.4 | `Hero.vue` (link de descarga) + `public/Tech_Engineer_Resume_Template.pdf` | Tu CV real, con nombre de archivo propio |
-| 1.5 | `Projects.vue` (array `projects`) | 2–4 proyectos reales con capturas propias |
-| 1.7 | `Hero.vue` e `Contacto.vue` (`<img src="">`) | Foto/avatar real e imagen de Contacto |
-| 1.8 | `Foother.vue` (URLs de `SocialIcon`) | Tus perfiles reales de GitHub/LinkedIn/Twitter |
+| Tarea | Archivo                                                                    | Qué falta                                      |
+| ----- | -------------------------------------------------------------------------- | ---------------------------------------------- |
+| 1.3   | `Hero.vue` (frase del `<h1>`)                                              | Tu frase de posicionamiento real               |
+| 1.4   | `Hero.vue` (link de descarga) + `public/Tech_Engineer_Resume_Template.pdf` | Tu CV real, con nombre de archivo propio       |
+| 1.5   | `Projects.vue` (array `projects`)                                          | 2–4 proyectos reales con capturas propias      |
+| 1.7   | `Hero.vue` e `Contacto.vue` (`<img src="">`)                               | Foto/avatar real e imagen de Contacto          |
+| 1.8   | `Foother.vue` (URLs de `SocialIcon`)                                       | Tus perfiles reales de GitHub/LinkedIn/Twitter |
 
 Ninguna de estas tareas requería una decisión de diseño pendiente — solo el dato en sí, así
 que no se preguntó nada adicional sobre ellas.

@@ -48,6 +48,7 @@
 // usuario: mismo componente sin backend ni páginas internas de post, solo tarjetas que
 // enlazan a posts publicados en otro lado.
 export default {
+  name: 'BlogSection',
   data() {
     return {
       posts: [

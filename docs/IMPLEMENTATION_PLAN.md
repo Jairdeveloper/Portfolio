@@ -39,15 +39,15 @@ implementación a mitad de camino.
 Nada de lo siguiente requiere abrir un editor; es investigación/decisión personal. Bloquea
 varias tareas de la Fase 1, así que conviene resolverlo primero o en paralelo.
 
-| # | Qué reunir | Por qué bloquea |
-|---|---|---|
+| #   | Qué reunir                                                                                                       | Por qué bloquea                              |
+| --- | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
 | 0.1 | 2–4 proyectos reales: nombre, descripción (2–3 frases), tu rol específico, stack, link a demo/repo, captura real | Bloquea 1.5 (reemplazar proyecto de ejemplo) |
-| 0.2 | Historial real de experiencia laboral y formación/estudios (aunque sea breve) | Bloquea 1.2 (About) |
-| 0.3 | Frase de posicionamiento para el Hero (qué tipo de developer eres, qué te diferencia) | Bloquea 1.3 (Hero) |
-| 0.4 | CV actualizado en PDF con nombre de archivo propio | Bloquea 1.4 (CV) |
-| 0.5 | URLs reales de GitHub/LinkedIn (y Twitter si lo usas activamente) | Bloquea 1.7 (Footer) |
-| 0.6 | Foto/avatar para el Hero, e imagen para Contacto | Bloquea 1.6 (imágenes vacías) |
-| 0.7 | Decisión: ¿blog activo con contenido real, o se retira por ahora? | Bloquea 1.8 (Blog) |
+| 0.2 | Historial real de experiencia laboral y formación/estudios (aunque sea breve)                                    | Bloquea 1.2 (About)                          |
+| 0.3 | Frase de posicionamiento para el Hero (qué tipo de developer eres, qué te diferencia)                            | Bloquea 1.3 (Hero)                           |
+| 0.4 | CV actualizado en PDF con nombre de archivo propio                                                               | Bloquea 1.4 (CV)                             |
+| 0.5 | URLs reales de GitHub/LinkedIn (y Twitter si lo usas activamente)                                                | Bloquea 1.7 (Footer)                         |
+| 0.6 | Foto/avatar para el Hero, e imagen para Contacto                                                                 | Bloquea 1.6 (imágenes vacías)                |
+| 0.7 | Decisión: ¿blog activo con contenido real, o se retira por ahora?                                                | Bloquea 1.8 (Blog)                           |
 
 **Esfuerzo:** L (esto es trabajo de reflexión/recopilación personal, no de código — puede
 tomar varios días en paralelo con otras cosas).
@@ -188,14 +188,15 @@ verificado con clic real (no solo lectura del código).
 **Archivo:** `src/components/Blog/Blog.vue:29–47`, `src/views/Home.vue:5`
 **Problema concreto:** tres posts hardcodeados con `url: '#'` — no llevan a ningún lado.
 **Cambio, según la decisión de 0.7:**
+
 - Si se retira: quitar `<Blog />` de `Home.vue:5` y su import; el componente puede quedar
   sin usar en `src/components/Blog/` o eliminarse — decidir según si se planea retomarlo
   en Fase 3.
 - Si se mantiene: reemplazar los 3 posts con contenido real (aunque sean pocos) y `url`
   reales, no `#`.
-**Esfuerzo:** S (retirar) o L (escribir contenido real de blog).
-**Criterio de aceptación:** ningún link del Blog visible en producción apunta a `#`; si se
-retiró, no queda ninguna referencia rota a `<Blog />` en `Home.vue`.
+  **Esfuerzo:** S (retirar) o L (escribir contenido real de blog).
+  **Criterio de aceptación:** ningún link del Blog visible en producción apunta a `#`; si se
+  retiró, no queda ninguna referencia rota a `<Blog />` en `Home.vue`.
 
 ### 1.10 — Mover credenciales de EmailJS a variables de entorno
 
@@ -262,6 +263,7 @@ del navegador muestra un favicon, no el ícono genérico.
 
 **Archivos:** todos los componentes con `<img>` o `<a>`/`<button>`
 **Cambios:**
+
 - Revisar cada `<img>` (`Hero.vue`, `Contacto.vue`, `Projects.vue`) y asegurar `alt`
   descriptivo, no vacío ni genérico.
 - Añadir clases `focus:` (p. ej. `focus:outline-none focus:ring-2 focus:ring-blue-500`,
@@ -271,9 +273,9 @@ del navegador muestra un favicon, no el ícono genérico.
 - Verificar contraste de texto sobre `graydark`/`lightgray` con una herramienta de
   contraste (p. ej. el panel de accesibilidad de las devtools de Chrome/Firefox), objetivo
   WCAG AA.
-**Esfuerzo:** M.
-**Criterio de aceptación:** navegar todo el sitio solo con Tab muestra un indicador visual
-de foco en cada elemento interactivo; Lighthouse (categoría Accessibility) reporta 90+.
+  **Esfuerzo:** M.
+  **Criterio de aceptación:** navegar todo el sitio solo con Tab muestra un indicador visual
+  de foco en cada elemento interactivo; Lighthouse (categoría Accessibility) reporta 90+.
 
 ### 2.3 — Menú responsive (hamburguesa) en el Header
 
@@ -295,11 +297,13 @@ correctamente y los links funcionan igual que en desktop.
 **Problema concreto:** el repo versiona la carpeta de build junto al código fuente;
 `npm run deploy` la regenera igual, así que es ruido redundante en el historial.
 **Cambio:**
+
 ```bash
 git rm -r --cached dist/
 echo "dist/" >> .gitignore
 git commit -m "Remove build output from version control"
 ```
+
 **Esfuerzo:** S, pero **requiere confirmación del usuario antes de ejecutarse** — es un
 cambio que reescribe qué hay trackeado en el repo remoto y debe hacerse como su propio
 commit, no mezclado con cambios de contenido.
@@ -331,27 +335,27 @@ Ninguna de estas tareas es necesaria para el checklist de "listo para compartir 
 (spec §11). Se listan con el mismo nivel de detalle para cuando decidas retomarlas, pero
 no deberían bloquear la Fase 1/2.
 
-| Tarea | Esfuerzo | Nota |
-|---|---|---|
-| Dominio propio en vez de `github.io` | S (compra) + M (config DNS + `base` de Vite) | Cambiar `base` a `/` si el dominio no usa subruta; revisar que no rompa assets |
-| Analítica básica (Plausible/GA) | S | Añadir script/snippet; decidir por privacidad si Plausible (sin cookies) es preferible a GA |
-| Modo oscuro | L | Ya existe la clase `dark` en la paleta Tailwind actual — investigar si es solo un color o si hay que implementar el toggle completo con `class` strategy de Tailwind |
-| Blog real conectado a Supabase o Markdown | L (multi-sesión) | Solo si en la Fase 1 (tarea 1.9) se decidió mantener el blog; si se optó por Markdown estático, evaluar `vite-plugin-md` o similar antes de reinstalar Supabase |
+| Tarea                                     | Esfuerzo                                     | Nota                                                                                                                                                                 |
+| ----------------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Dominio propio en vez de `github.io`      | S (compra) + M (config DNS + `base` de Vite) | Cambiar `base` a `/` si el dominio no usa subruta; revisar que no rompa assets                                                                                       |
+| Analítica básica (Plausible/GA)           | S                                            | Añadir script/snippet; decidir por privacidad si Plausible (sin cookies) es preferible a GA                                                                          |
+| Modo oscuro                               | L                                            | Ya existe la clase `dark` en la paleta Tailwind actual — investigar si es solo un color o si hay que implementar el toggle completo con `class` strategy de Tailwind |
+| Blog real conectado a Supabase o Markdown | L (multi-sesión)                             | Solo si en la Fase 1 (tarea 1.9) se decidió mantener el blog; si se optó por Markdown estático, evaluar `vite-plugin-md` o similar antes de reinstalar Supabase      |
 
 ---
 
 ## Checklist de "listo para compartir el link" (spec §11) — mapeado a tareas
 
-| Ítem del checklist | Tarea(s) que lo resuelve |
-|---|---|
-| Enlaces de navegación llevan a la sección correcta | 1.1 |
-| Ningún dato visible es de plantilla | 1.2, 1.3, 1.5, 1.9 |
-| CV descargable actual, con tu nombre en el archivo | 1.4 |
-| Formulario de contacto probado end-to-end | 1.10, 1.11 (probar después de mover a env vars) |
-| No hay formularios públicos escribiendo a BD sin protección | 1.6 |
-| Título de pestaña y vista previa muestran tu nombre | 2.1 |
-| Se ve bien en un celular real | 2.3 |
-| No quedan credenciales visibles sin necesidad | 1.10 |
+| Ítem del checklist                                          | Tarea(s) que lo resuelve                        |
+| ----------------------------------------------------------- | ----------------------------------------------- |
+| Enlaces de navegación llevan a la sección correcta          | 1.1                                             |
+| Ningún dato visible es de plantilla                         | 1.2, 1.3, 1.5, 1.9                              |
+| CV descargable actual, con tu nombre en el archivo          | 1.4                                             |
+| Formulario de contacto probado end-to-end                   | 1.10, 1.11 (probar después de mover a env vars) |
+| No hay formularios públicos escribiendo a BD sin protección | 1.6                                             |
+| Título de pestaña y vista previa muestran tu nombre         | 2.1                                             |
+| Se ve bien en un celular real                               | 2.3                                             |
+| No quedan credenciales visibles sin necesidad               | 1.10                                            |
 
 Este mapeo es la forma más rápida de verificar, al final de la Fase 1 + 2.1/2.3, que el
 sitio ya cumple el criterio mínimo para publicarse en un CV/LinkedIn.
@@ -360,12 +364,12 @@ sitio ya cumple el criterio mínimo para publicarse en un CV/LinkedIn.
 
 ## Resumen de esfuerzo total
 
-| Fase | Esfuerzo estimado | Bloqueante |
-|---|---|---|
-| Fase 0 (reunir contenido) | Variable, días en paralelo | Bloquea 1.2, 1.3, 1.4, 1.5, 1.7, 1.8, 1.9 |
-| Fase 1 (corrección + contenido) | ~2–3 tardes | Depende de Fase 0 |
-| Fase 2 (acabado profesional) | ~1–2 tardes | Independiente de Fase 0, puede empezar en paralelo a Fase 1 en tareas como 2.4/2.5 |
-| Fase 3 (opcional) | No estimado — bajo demanda | Ninguno de los anteriores |
+| Fase                            | Esfuerzo estimado          | Bloqueante                                                                         |
+| ------------------------------- | -------------------------- | ---------------------------------------------------------------------------------- |
+| Fase 0 (reunir contenido)       | Variable, días en paralelo | Bloquea 1.2, 1.3, 1.4, 1.5, 1.7, 1.8, 1.9                                          |
+| Fase 1 (corrección + contenido) | ~2–3 tardes                | Depende de Fase 0                                                                  |
+| Fase 2 (acabado profesional)    | ~1–2 tardes                | Independiente de Fase 0, puede empezar en paralelo a Fase 1 en tareas como 2.4/2.5 |
+| Fase 3 (opcional)               | No estimado — bajo demanda | Ninguno de los anteriores                                                          |
 
 **Orden recomendado de ejecución:** empezar Fase 0 en paralelo con las tareas de Fase 1 y
 2 que no dependen de contenido nuevo (1.1, 1.6, 1.10, 1.11, 2.4, 2.5) — son puramente

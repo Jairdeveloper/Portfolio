@@ -65,7 +65,6 @@
           </a>
         </div>
       </div>
-
     </div>
   </section>
 </template>
@@ -75,24 +74,25 @@
 // reales (nombre, descripción de tu rol específico, stack, link a demo/repo, captura real
 // en vez de picsum.photos). Ver docs/IMPLEMENTATION_PLAN.md tarea 1.5.
 export default {
+  name: 'ProjectsSection',
   data() {
     return {
       projects: [
         {
-          title: "Food finder",
-          image: "https://picsum.photos/400/200?random=1",
-          description: "The Food Finder application shows a list of restaurants and their locations. The user can click  these to see additional details about each location. In addition, they can log in to the app with their GitHub accounts by using OAuth so that they can maintain a wish list of locations.Descripción breve del proyecto de ejemplo.",
-          url: "https://foodfinder-fjpa4w2uc-zped08s-projects.vercel.app/",
+          title: 'Food finder',
+          image: 'https://picsum.photos/400/200?random=1',
+          description:
+            'The Food Finder application shows a list of restaurants and their locations. The user can click  these to see additional details about each location. In addition, they can log in to the app with their GitHub accounts by using OAuth so that they can maintain a wish list of locations.Descripción breve del proyecto de ejemplo.',
+          url: 'https://foodfinder-fjpa4w2uc-zped08s-projects.vercel.app/',
         },
       ],
       featured: null,
-    };
+    }
   },
   methods: {
     setFeatured(project) {
-      this.featured = project;
+      this.featured = project
     },
   },
-};
+}
 </script>
-

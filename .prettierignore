@@ -1,0 +1,4 @@
+dist/
+.github/
+.claude/
+prompt.md

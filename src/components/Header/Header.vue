@@ -1,13 +1,17 @@
 <template>
-  <header class=" p-6 max-w-5xl mx-auto">
+  <header class="p-6 max-w-5xl mx-auto">
     <div class="flex justify-between items-center">
       <h1 class="text-xl font-bold">Portfolio de Jair Flores</h1>
 
       <!-- Nav de escritorio: siempre visible desde el breakpoint md hacia arriba -->
       <nav class="hidden md:flex space-x-4">
         <a href="#inicio" class="focus:outline-none focus:ring-2 focus:ring-dark rounded">Inicio</a>
-        <a href="#about" class="focus:outline-none focus:ring-2 focus:ring-dark rounded">Sobre mí</a>
-        <a href="#contact" class="focus:outline-none focus:ring-2 focus:ring-dark rounded">Contacto</a>
+        <a href="#about" class="focus:outline-none focus:ring-2 focus:ring-dark rounded"
+          >Sobre mí</a
+        >
+        <a href="#contact" class="focus:outline-none focus:ring-2 focus:ring-dark rounded"
+          >Contacto</a
+        >
       </nav>
 
       <!-- Botón hamburguesa: solo visible por debajo de md (pantallas pequeñas) -->
@@ -32,12 +36,16 @@
     >
       <a href="#inicio" class="focus:outline-none focus:ring-2 focus:ring-dark rounded">Inicio</a>
       <a href="#about" class="focus:outline-none focus:ring-2 focus:ring-dark rounded">Sobre mí</a>
-      <a href="#contact" class="focus:outline-none focus:ring-2 focus:ring-dark rounded">Contacto</a>
+      <a href="#contact" class="focus:outline-none focus:ring-2 focus:ring-dark rounded"
+        >Contacto</a
+      >
     </nav>
   </header>
 </template>
 
 <script setup>
+defineOptions({ name: 'AppHeader' })
+
 import { ref } from 'vue'
 
 // `ref` crea un valor reactivo: cuando `open` cambia, Vue vuelve a renderizar

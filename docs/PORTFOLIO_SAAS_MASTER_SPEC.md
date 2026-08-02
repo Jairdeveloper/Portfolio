@@ -1,5 +1,5 @@
-
 # Portfolio SaaS — Documento Maestro de Especificación
+
 ### PRD + Software Architecture Specification + Solution Architecture Document
 
 **Versión:** 1.0 · **Fecha:** 2026-07-08 · **Autor del análisis:** Product/Solution/Security/FinTech Architecture (asistido por IA)
@@ -41,6 +41,7 @@ Portfolio SaaS es la evolución de un portfolio personal hacia una plataforma de
 La tesis central: **la confianza es el producto**. Cualquier plataforma puede listar servicios; pocas pueden garantizar que el dinero, los entregables y las expectativas estén protegidos para ambas partes durante todo el ciclo de vida del contrato. El Escrow no es una feature de pagos, es la columna vertebral de estados que atraviesa contratos, entregables, aprobaciones, disputas y reputación.
 
 El documento está diseñado para permitir dos velocidades de crecimiento:
+
 - **Modo 1 (día 1):** un solo proveedor (el propietario) vendiendo sus propios servicios, con Escrow operando como garantía simple depósito→entrega→liberación.
 - **Modo N (multi-tenant):** múltiples proveedores/empresas verificados operando en el mismo marketplace, con comisión de plataforma, arbitraje y reputación agregada.
 
@@ -51,17 +52,21 @@ La arquitectura se diseña desde el día 1 pensando en Modo N, aunque el lanzami
 ## 1. Visión del producto
 
 ### 1.1 Propósito
+
 Convertir el momento en que un prospecto evalúa "¿le confío mi dinero y mi proyecto a este proveedor?" en un proceso estructurado, transparente y auditable, en lugar de un acto de fe basado en un portfolio bonito y una conversación por email o WhatsApp.
 
 ### 1.2 Problema que resuelve
+
 - **Para el cliente:** miedo a pagar por adelantado a un proveedor desconocido; falta de visibilidad sobre el avance; ambigüedad sobre qué se entrega y cuándo; disputas sin mecanismo neutral de resolución.
 - **Para el proveedor (freelancer/estudio/empresa):** miedo a trabajar y no cobrar; negociaciones informales sin trazabilidad; fricción para transmitir profesionalismo frente a competidores con "solo un portfolio"; gestión dispersa entre email, WhatsApp, Drive y hojas de cálculo.
 - **Para ambos:** la falta de un sistema único que una descubrimiento → cotización → contrato → pago custodiado → entrega → aceptación → liberación → reputación.
 
 ### 1.3 Propuesta de valor
+
 "Contrata con la confianza de un banco, la simplicidad de un portfolio y la trazabilidad de un gestor de proyectos." Un único lugar donde el cliente descubre el trabajo, negocia el alcance, paga a una cuenta neutral, sigue el progreso con hitos verificables, aprueba entregables y libera el pago — todo con evidencia y auditoría.
 
 ### 1.4 Diferenciadores
+
 - Escrow nativo y transversal (no un plugin de pagos), aplicado no solo a dinero sino a documentos, aprobaciones y evidencias.
 - Portfolio-first: la superficie pública es de calidad "agencia premium", no de "perfil de freelancer genérico".
 - Configurable por tipo de servicio (desarrollo, diseño, consultoría, legal, etc.) mediante plantillas de flujo de hitos, no código a medida por vertical.
@@ -69,14 +74,16 @@ Convertir el momento en que un prospecto evalúa "¿le confío mi dinero y mi pr
 - IA integrada en los puntos de fricción reales (redacción de propuestas, contratos, resúmenes de avance, detección de riesgo de disputa) en lugar de un chatbot decorativo.
 
 ### 1.5 Ventajas competitivas frente al mercado
-| Alternativa | Limitación típica | Ventaja de Portfolio SaaS |
-|---|---|---|
-| Landing page / portfolio estático | No transacciona, no genera confianza operativa | Todo el ciclo de vida en un solo lugar |
-| Upwork/Fiverr | Marca del proveedor diluida bajo la marca del marketplace, comisión alta, soporte genérico | Marca propia, white-label posible, Escrow configurable por vertical |
-| CRM genérico (HubSpot, Pipedrive) | No custodia dinero ni gestiona entregables/hitos | Escrow y entregables nativos, no add-ons |
-| Agencia digital tradicional (sitio + facturación aparte) | Procesos manuales, sin portal de cliente | Portal de cliente en tiempo real con estado de fondos y entregables |
+
+| Alternativa                                              | Limitación típica                                                                          | Ventaja de Portfolio SaaS                                           |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| Landing page / portfolio estático                        | No transacciona, no genera confianza operativa                                             | Todo el ciclo de vida en un solo lugar                              |
+| Upwork/Fiverr                                            | Marca del proveedor diluida bajo la marca del marketplace, comisión alta, soporte genérico | Marca propia, white-label posible, Escrow configurable por vertical |
+| CRM genérico (HubSpot, Pipedrive)                        | No custodia dinero ni gestiona entregables/hitos                                           | Escrow y entregables nativos, no add-ons                            |
+| Agencia digital tradicional (sitio + facturación aparte) | Procesos manuales, sin portal de cliente                                                   | Portal de cliente en tiempo real con estado de fondos y entregables |
 
 ### 1.6 Oportunidades de negocio y monetización
+
 - **Comisión por transacción** sobre el monto en Escrow liberado (modelo marketplace, 5–15% escalonado por volumen/tier).
 - **Suscripción SaaS por proveedor** (planes Starter/Pro/Business) con límites de proyectos activos, seats de equipo, automatizaciones IA y branding blanco.
 - **Fee de Escrow** independiente de la comisión de marketplace, cobrable también a plataformas de terceros que integren el motor de Escrow vía API (Escrow-as-a-Service).
@@ -87,6 +94,7 @@ Convertir el momento en que un prospecto evalúa "¿le confío mi dinero y mi pr
 - **Datos y analítica agregada anonimizada** (benchmarks de precios por vertical/región) como producto de datos B2B a futuro.
 
 ### 1.7 Estrategia de crecimiento del producto
+
 Fase de anclaje (portfolio + cotización + Escrow simple de una sola parte) → fase de expansión (multi-proveedor, reputación, marketplace público) → fase de plataforma (API pública, white-label, IA agencial, ecosistema de plugins). El crecimiento se financia inicialmente con el propio uso del propietario como primer proveedor ("dogfooding"), reduciendo riesgo antes de abrir a terceros.
 
 ---
@@ -94,22 +102,25 @@ Fase de anclaje (portfolio + cotización + Escrow simple de una sola parte) → 
 ## 2. Concepto de Portfolio SaaS
 
 ### 2.1 Definición
+
 Un **Portfolio SaaS** es una plataforma en la que la vitrina profesional (portfolio) y el motor transaccional (contratación, pago, entrega) son la misma superficie, no dos sistemas enlazados por un botón "Contactar". El visitante nunca sale del ecosistema: descubre, cotiza, contrata, paga, sigue el proyecto y deja reseña sin salir de la plataforma ni depender de herramientas externas de terceros no integradas.
 
 ### 2.2 Diferencias con otros modelos
 
-| Modelo | Objetivo principal | Transacciona dinero | Gestiona el proyecto post-venta | Multi-proveedor |
-|---|---|---|---|---|
-| Landing Page | Generar leads | No | No | No |
-| Página corporativa | Comunicar marca/institucional | No | No | No |
-| Marketplace (Fiverr/Upwork) | Conectar oferta y demanda a escala | Sí | Parcial (chat + milestones básicos) | Sí, con marca diluida |
-| CRM | Gestionar el pipeline comercial interno | No (a veces vía integración) | No | No aplica (uso interno) |
-| Plataforma Freelance (Workana, etc.) | Subasta de proyectos por precio | Sí | Parcial | Sí |
-| Agencia Digital (sitio + backoffice manual) | Vender servicios propios | Fuera de plataforma | Manual (email/Drive) | No (agencia única) |
-| **Portfolio SaaS (este producto)** | Vender y **entregar con confianza garantizada** | Sí, vía Escrow nativo | Sí, con hitos, entregables y aceptación formal | Sí, escalable desde 1 proveedor |
+| Modelo                                      | Objetivo principal                              | Transacciona dinero          | Gestiona el proyecto post-venta                | Multi-proveedor                 |
+| ------------------------------------------- | ----------------------------------------------- | ---------------------------- | ---------------------------------------------- | ------------------------------- |
+| Landing Page                                | Generar leads                                   | No                           | No                                             | No                              |
+| Página corporativa                          | Comunicar marca/institucional                   | No                           | No                                             | No                              |
+| Marketplace (Fiverr/Upwork)                 | Conectar oferta y demanda a escala              | Sí                           | Parcial (chat + milestones básicos)            | Sí, con marca diluida           |
+| CRM                                         | Gestionar el pipeline comercial interno         | No (a veces vía integración) | No                                             | No aplica (uso interno)         |
+| Plataforma Freelance (Workana, etc.)        | Subasta de proyectos por precio                 | Sí                           | Parcial                                        | Sí                              |
+| Agencia Digital (sitio + backoffice manual) | Vender servicios propios                        | Fuera de plataforma          | Manual (email/Drive)                           | No (agencia única)              |
+| **Portfolio SaaS (este producto)**          | Vender y **entregar con confianza garantizada** | Sí, vía Escrow nativo        | Sí, con hitos, entregables y aceptación formal | Sí, escalable desde 1 proveedor |
 
 ### 2.3 Coexistencia de conceptos dentro del producto
+
 El producto no elige entre estos modelos: los estratifica.
+
 1. **Capa pública (Landing + Portfolio + Catálogo):** SEO, credibilidad, casos de éxito, testimonios — funciona igual que una landing premium para el visitante anónimo.
 2. **Capa de descubrimiento (Marketplace):** cuando hay más de un proveedor, el catálogo se convierte en buscador/comparador con filtros, categorías y reputación.
 3. **Capa comercial (CRM ligero):** cada lead/prospecto se convierte en una entidad de pipeline con seguimiento, sin necesitar un CRM externo para el propietario o proveedores pequeños.
@@ -123,7 +134,9 @@ Esta estratificación permite que el mismo producto sirva a un freelancer solo (
 ## 3. Concepto Escrow aplicado
 
 ### 3.1 Alcance del Escrow (más allá del dinero)
+
 El Escrow se modela como una **máquina de estados de confianza** que custodia seis tipos de activos simultáneamente y los libera de forma correlacionada:
+
 1. **Financiero:** depósitos, anticipos, hitos, garantías, reembolsos.
 2. **Contractual:** el contrato firmado que define las condiciones de liberación.
 3. **Documental:** entregables, evidencias, actas de aceptación.
@@ -156,6 +169,7 @@ El Escrow se modela como una **máquina de estados de confianza** que custodia s
 **Cierre:** el contrato se marca cerrado, se genera la factura final, se solicita reseña a ambas partes, y el historial queda inmutable para auditoría futura.
 
 ### 3.3 Escenarios distintos
+
 - **Servicio de precio fijo con hitos:** el caso base descrito arriba.
 - **Servicio por horas/retainer:** el Escrow funciona como una bolsa recargable; se liberan tramos según reportes de horas aprobados semanal/mensualmente.
 - **Servicio de suscripción (soporte/mantenimiento):** Escrow rotativo: cada ciclo de facturación deposita, se consume el servicio, se libera al cierre del ciclo salvo disputa.
@@ -169,24 +183,24 @@ El Escrow se modela como una **máquina de estados de confianza** que custodia s
 
 ## 4. Actores
 
-| Actor | Descripción | Notas |
-|---|---|---|
-| Visitante anónimo | Navega el portfolio/catálogo sin cuenta | Fuente de leads |
-| Prospecto | Visitante identificado (dejó contacto/solicitó cotización) | Entra al pipeline comercial |
-| Cliente | Usuario que contrata y paga por un servicio | Puede ser individuo o empresa (cuenta corporativa) |
-| Proveedor / Freelancer | Ofrece servicios propios | Puede ser el propietario u onboarded de terceros |
-| Empresa proveedora | Persona jurídica con múltiples miembros de equipo | Tiene sub-roles internos (owner, miembro, facturación) |
-| Colaborador interno | Miembro de equipo de un proveedor con permisos acotados | Ej. diseñador que solo ve sus tareas asignadas |
-| Gestor comercial (Sales) | Administra el pipeline, cotizaciones y negociación | Rol interno de plataforma o de proveedor grande |
-| Gestor de proyectos (PM) | Supervisa hitos y entregables de varios contratos | Puede ser interno del proveedor o de la plataforma (servicio gestionado) |
-| Agente de soporte | Atiende tickets de cliente/proveedor | Acceso a conversaciones e historial, no a fondos |
-| Agente/Árbitro de Escrow | Resuelve disputas siguiendo evidencia | Rol de alta confianza, auditado |
-| Administrador de plataforma | Gobierna configuración global, comisiones, verificación de proveedores | Súper-rol con RBAC estricto |
-| Oficial de cumplimiento (Compliance) | Supervisa KYC/KYB, AML, límites regulatorios | Relevante al escalar a multi-tenant financiero |
-| Auditor (interno/externo) | Acceso de solo lectura a registros inmutables | Para auditorías financieras o de seguridad |
-| Socio/Partner (afiliado) | Refiere clientes o proveedores a cambio de comisión | Rol de crecimiento, no operativo |
-| Sistema/API externa | Integraciones (PSP, firma electrónica, calendario, IA) | Actor no humano con su propio scope de permisos |
-| Agente de IA (asistente) | Ejecuta tareas automatizadas (propuestas, resúmenes, triage) | Actúa "en nombre de" un rol humano, con límites explícitos |
+| Actor                                | Descripción                                                            | Notas                                                                    |
+| ------------------------------------ | ---------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Visitante anónimo                    | Navega el portfolio/catálogo sin cuenta                                | Fuente de leads                                                          |
+| Prospecto                            | Visitante identificado (dejó contacto/solicitó cotización)             | Entra al pipeline comercial                                              |
+| Cliente                              | Usuario que contrata y paga por un servicio                            | Puede ser individuo o empresa (cuenta corporativa)                       |
+| Proveedor / Freelancer               | Ofrece servicios propios                                               | Puede ser el propietario u onboarded de terceros                         |
+| Empresa proveedora                   | Persona jurídica con múltiples miembros de equipo                      | Tiene sub-roles internos (owner, miembro, facturación)                   |
+| Colaborador interno                  | Miembro de equipo de un proveedor con permisos acotados                | Ej. diseñador que solo ve sus tareas asignadas                           |
+| Gestor comercial (Sales)             | Administra el pipeline, cotizaciones y negociación                     | Rol interno de plataforma o de proveedor grande                          |
+| Gestor de proyectos (PM)             | Supervisa hitos y entregables de varios contratos                      | Puede ser interno del proveedor o de la plataforma (servicio gestionado) |
+| Agente de soporte                    | Atiende tickets de cliente/proveedor                                   | Acceso a conversaciones e historial, no a fondos                         |
+| Agente/Árbitro de Escrow             | Resuelve disputas siguiendo evidencia                                  | Rol de alta confianza, auditado                                          |
+| Administrador de plataforma          | Gobierna configuración global, comisiones, verificación de proveedores | Súper-rol con RBAC estricto                                              |
+| Oficial de cumplimiento (Compliance) | Supervisa KYC/KYB, AML, límites regulatorios                           | Relevante al escalar a multi-tenant financiero                           |
+| Auditor (interno/externo)            | Acceso de solo lectura a registros inmutables                          | Para auditorías financieras o de seguridad                               |
+| Socio/Partner (afiliado)             | Refiere clientes o proveedores a cambio de comisión                    | Rol de crecimiento, no operativo                                         |
+| Sistema/API externa                  | Integraciones (PSP, firma electrónica, calendario, IA)                 | Actor no humano con su propio scope de permisos                          |
+| Agente de IA (asistente)             | Ejecuta tareas automatizadas (propuestas, resúmenes, triage)           | Actúa "en nombre de" un rol humano, con límites explícitos               |
 
 El modelo de roles debe ser **extensible**: nuevos roles se agregan por composición de permisos (RBAC/ABAC), no por código nuevo por rol.
 
@@ -195,6 +209,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 ## 5. Casos de uso (115)
 
 ### A. Descubrimiento y marca (8)
+
 1. Visitante navega el portfolio y ve proyectos destacados con filtros por categoría/tecnología/industria.
 2. Visitante lee casos de éxito con métricas de impacto (antes/después).
 3. Visitante consulta testimonios verificados de clientes reales.
@@ -205,6 +220,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 8. Visitante comparte una página de servicio/proyecto en redes sociales con metadatos OG optimizados.
 
 ### B. Catálogo y marketplace de servicios (10)
+
 9. Proveedor publica un nuevo servicio con alcance, entregables incluidos, precio y duración estimada.
 10. Proveedor define paquetes/tiers de un mismo servicio (básico/estándar/premium).
 11. Proveedor define add-ons opcionales sobre un servicio base.
@@ -217,6 +233,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 18. Proveedor duplica un servicio existente como plantilla para uno nuevo.
 
 ### C. Cotización y negociación (8)
+
 19. Cliente solicita una cotización personalizada describiendo su necesidad (formulario guiado).
 20. Proveedor recibe la solicitud en su pipeline y responde con una propuesta formal (alcance, precio, hitos, plazos).
 21. Cliente y proveedor negocian el alcance mediante mensajería estructurada vinculada a la cotización.
@@ -227,6 +244,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 26. Proveedor convierte una conversación de soporte/consulta en una cotización formal.
 
 ### D. Contratación y contratos (8)
+
 27. Sistema genera el contrato a partir de la cotización aceptada, con cláusulas estándar configurables por vertical.
 28. Cliente y proveedor firman el contrato digitalmente (firma electrónica simple o avanzada según monto).
 29. Contrato define el desglose de hitos y condiciones de liberación de Escrow antes de la firma.
@@ -237,6 +255,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 34. Administrador revisa y aprueba plantillas de contrato antes de su publicación para proveedores.
 
 ### E. Escrow y pagos (12)
+
 35. Cliente deposita fondos en Escrow para iniciar el proyecto (pago único o primer hito).
 36. Sistema confirma el fondeo y notifica a ambas partes con comprobante.
 37. Proveedor solicita liberación de un hito tras marcar el entregable como completo.
@@ -251,6 +270,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 46. Sistema genera reporte de comisiones de plataforma por transacción liberada.
 
 ### F. Gestión de proyectos y entregables (10)
+
 47. Proveedor crea el plan de hitos de un contrato con fechas estimadas.
 48. Proveedor sube un entregable (archivo, enlace, acceso) vinculado a un hito.
 49. Sistema versiona entregables y mantiene historial de revisiones.
@@ -263,6 +283,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 56. Administrador de plataforma interviene en un proyecto estancado (rol de PM gestionado, plan premium).
 
 ### G. Comunicación y colaboración (8)
+
 57. Cliente y proveedor chatean en tiempo real dentro del contexto del contrato/proyecto.
 58. Sistema ofrece videollamada integrada para reuniones de kickoff o revisión.
 59. Sistema envía notificaciones multicanal (email, push, SMS/WhatsApp) configurables por usuario.
@@ -273,6 +294,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 64. Soporte interviene en una conversación cliente-proveedor cuando se le escala (con consentimiento/registro).
 
 ### H. Portal del cliente (6)
+
 65. Cliente visualiza el estado consolidado de todos sus proyectos activos.
 66. Cliente descarga todas sus facturas y comprobantes desde un solo lugar.
 67. Cliente gestiona sus métodos de pago guardados.
@@ -281,6 +303,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 70. Cliente exporta el historial completo de un proyecto (contrato, entregables, mensajes, pagos) para sus registros.
 
 ### I. Portal del proveedor (6)
+
 71. Proveedor visualiza su dashboard de ingresos, proyectos activos y pipeline comercial.
 72. Proveedor configura su disponibilidad y capacidad (cuántos proyectos simultáneos acepta).
 73. Proveedor gestiona a su equipo interno y asigna colaboradores a tareas/hitos.
@@ -289,6 +312,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 76. Proveedor completa su proceso de verificación (KYC/KYB) para habilitar cobros.
 
 ### J. Reputación y reseñas (6)
+
 77. Sistema solicita reseña bidireccional (cliente→proveedor y proveedor→cliente) al cerrar un contrato.
 78. Sistema calcula un score de reputación agregado ponderado por volumen, recencia y disputas.
 79. Proveedor responde públicamente a una reseña recibida.
@@ -297,6 +321,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 82. Administrador suspende temporalmente la visibilidad de reseñas en disputa activa hasta su resolución.
 
 ### K. Administración y backoffice (8)
+
 83. Administrador configura las comisiones de plataforma por categoría/tier.
 84. Administrador aprueba o rechaza el onboarding de un nuevo proveedor.
 85. Administrador configura las plantillas de contrato y políticas de cancelación por defecto.
@@ -307,6 +332,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 90. Administrador gestiona feature flags y configuración de planes SaaS.
 
 ### L. Seguridad y cumplimiento (6)
+
 91. Usuario activa autenticación multifactor en su cuenta.
 92. Sistema fuerza re-autenticación para operaciones sensibles (liberar fondos, cambiar método de cobro).
 93. Sistema registra un log de auditoría inmutable de toda acción sobre fondos o documentos.
@@ -315,16 +341,18 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 96. Administrador de seguridad revisa un reporte de actividad anómala (login desde ubicación inusual, picos de solicitudes).
 
 ### M. IA y automatización (8)
+
 97. Asistente de IA sugiere una propuesta de cotización a partir de la descripción del cliente.
 98. Asistente de IA redacta un borrador de contrato ajustado al alcance acordado.
 99. Motor de búsqueda semántica recomienda servicios relevantes según la consulta en lenguaje natural del visitante.
-100. IA resume el estado de un proyecto para el cliente ("qué pasó esta semana").
-101. IA clasifica automáticamente tickets de soporte por urgencia y categoría.
-102. IA analiza el sentimiento de la conversación para detectar riesgo temprano de disputa.
-103. IA realiza OCR y extracción de datos sobre documentos subidos (facturas, identificaciones para KYC).
-104. IA detecta patrones de fraude en solicitudes de liberación o reembolso.
+100.  IA resume el estado de un proyecto para el cliente ("qué pasó esta semana").
+101.  IA clasifica automáticamente tickets de soporte por urgencia y categoría.
+102.  IA analiza el sentimiento de la conversación para detectar riesgo temprano de disputa.
+103.  IA realiza OCR y extracción de datos sobre documentos subidos (facturas, identificaciones para KYC).
+104.  IA detecta patrones de fraude en solicitudes de liberación o reembolso.
 
 ### N. Analítica y reportes (6)
+
 105. Administrador visualiza cohortes de retención de clientes y proveedores.
 106. Proveedor visualiza el embudo de conversión desde visita a contrato firmado.
 107. Sistema genera reporte de tiempo promedio de resolución de disputas.
@@ -333,6 +361,7 @@ El modelo de roles debe ser **extensible**: nuevos roles se agregan por composic
 110. Sistema alerta proactivamente sobre proyectos en riesgo (atraso, comunicación caída, hitos vencidos).
 
 ### O. Integraciones y API (5)
+
 111. Proveedor conecta su calendario externo (Google/Outlook) para sincronizar disponibilidad.
 112. Proveedor conecta su cuenta de almacenamiento externo (Drive/Dropbox) para adjuntar entregables grandes.
 113. Sistema emite webhooks a sistemas externos ante eventos clave (contrato firmado, fondos liberados).
@@ -421,6 +450,7 @@ Organizados por módulo funcional. Cada bloque asume las capacidades mínimas ne
 **Cierre** → contrato marcado como cerrado, solicitud de reseña bidireccional, archivado consultable.
 
 ### Variantes por modelo de negocio
+
 - **Precio fijo con hitos:** flujo estándar arriba descrito.
 - **Retainer/soporte recurrente:** el ciclo "depósito→consumo→liberación" se repite cada período de facturación sin generar un contrato nuevo cada vez.
 - **Marketplace multi-proveedor con comisión:** se añade el paso de cálculo y retención de comisión de plataforma en cada liberación.
@@ -492,13 +522,16 @@ Relaciones clave a resaltar para la fase de modelado físico: un **Contrato** es
 ## 11. Arquitectura Escrow
 
 ### 11.1 Estados principales de una Cuenta Escrow
+
 `CREADA → FONDEADA_PARCIAL / FONDEADA_TOTAL → EN_CUSTODIA → LIBERACION_PARCIAL (N veces) → EN_DISPUTA (posible, pausa transiciones) → LIBERADA_TOTAL → EN_GARANTIA → CERRADA`
 Rutas alternativas: `CREADA → CANCELADA` (antes de fondeo), `FONDEADA_* → REEMBOLSADA_PARCIAL/TOTAL` (cancelación post-depósito), `EN_DISPUTA → RESUELTA_A_FAVOR_PROVEEDOR / RESUELTA_A_FAVOR_CLIENTE / RESUELTA_PROPORCIONAL`.
 
 ### 11.2 Estados de un Hito (dentro de un Contrato)
+
 `PENDIENTE → EN_PROGRESO → ENTREGADO → EN_REVISION → APROBADO | OBJETADO`. `OBJETADO` puede volver a `EN_PROGRESO` (corrección dentro de alcance) o escalar a `EN_DISPUTA` a nivel de Escrow.
 
 ### 11.3 Reglas y validaciones core
+
 - No hay liberación sin fondeo previo verificado (validación de idempotencia y de saldo disponible antes de cualquier transición de liberación).
 - Toda transición de estado de Escrow genera un evento de auditoría inmutable con actor, timestamp, evidencia y firma criptográfica del evento (hash encadenado, tipo ledger).
 - Las liberaciones por montos superiores a un umbral configurable requieren doble aprobación (cliente + validación automática de riesgo, o cliente + supervisor humano).
@@ -507,21 +540,27 @@ Rutas alternativas: `CREADA → CANCELADA` (antes de fondeo), `FONDEADA_* → RE
 - Los reembolsos y liberaciones son operaciones **idempotentes** e **irreversibles** una vez confirmadas por el proveedor de pagos subyacente; toda corrección posterior se modela como una operación compensatoria nueva, nunca como edición del registro histórico.
 
 ### 11.4 Depósitos, hitos, revisión y aprobación
+
 El desglose de hitos se fija en el Contrato antes del primer depósito. Cada hito tiene: monto o porcentaje asociado, criterios de aceptación (texto libre o checklist configurable), plazo estimado, y política de auto-liberación propia (puede diferir por hito, ej. el hito final requiere aprobación explícita sin auto-liberación).
 
 ### 11.5 Liberaciones parciales y liberación final
+
 Las liberaciones parciales se ejecutan hito por hito. La liberación final puede incluir un remanente no distribuido en hitos (ej. ajustes) y dispara, si está configurado, el paso a `EN_GARANTIA` en lugar de `CERRADA` directamente.
 
 ### 11.6 Reembolsos
+
 Tres políticas configurables por el proveedor a nivel de servicio: reembolso total antes de inicio, reembolso proporcional a hitos no ejecutados, sin reembolso post-inicio (solo aplicable si se comunica explícitamente al cliente antes de la contratación, por requisitos de transparencia/regulación de protección al consumidor).
 
 ### 11.7 Disputas y arbitraje
+
 Flujo: **Apertura** (cualquiera de las partes, con motivo y evidencia) → **Conciliación asistida** (ventana corta para que las partes resuelvan directamente, con o sin mediación de IA sugiriendo términos) → **Escalamiento a arbitraje** (Agente/Árbitro humano revisa evidencia: mensajes, versiones de entregables, historial de aprobaciones) → **Resolución** (liberación a favor de una parte, reembolso, o split proporcional) → **Registro** (la resolución y su justificación quedan en el log inmutable y pueden afectar el score de reputación de la parte responsable).
 
 ### 11.8 Auditoría y trazabilidad
+
 Todo evento relevante (depósito, cambio de estado de hito, aprobación, liberación, apertura/resolución de disputa) se registra en un log de solo-append, con integridad verificable (encadenamiento de hashes), accesible en modo lectura para Auditores y Compliance, y exportable para requerimientos regulatorios o contables.
 
 ### 11.9 Interacción del Escrow con otros módulos
+
 - **Contratos:** define las reglas de liberación antes de existir la Cuenta Escrow.
 - **Proyectos/Hitos:** dispara transiciones de Escrow al cambiar de estado.
 - **Documentos:** todo entregable relevante a una liberación queda enlazado como evidencia.
@@ -553,64 +592,80 @@ Todo evento relevante (depósito, cambio de estado de hito, aprobación, liberac
 > Sección explícitamente tecnológica por solicitud del alcance. Se presentan alternativas viables y una recomendación justificada, no una imposición única salvo donde la justificación técnica es clara.
 
 ### 13.1 Frontend
-| Alternativa | Cuándo tiene sentido |
-|---|---|
+
+| Alternativa            | Cuándo tiene sentido                                                                                                                                 |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Vue 3 + Nuxt (SSR/SSG) | Continuidad directa con el stack actual (Vue 3 ya en uso); Nuxt aporta SSR/SEO necesario para la capa pública, algo que el SPA puro actual no ofrece |
-| React + Next.js | Mayor ecosistema de componentes y talento disponible; curva de reescritura total del frontend actual |
-| SvelteKit | Rendimiento superior y menor bundle; ecosistema más pequeño, mayor riesgo de contratación de talento |
+| React + Next.js        | Mayor ecosistema de componentes y talento disponible; curva de reescritura total del frontend actual                                                 |
+| SvelteKit              | Rendimiento superior y menor bundle; ecosistema más pequeño, mayor riesgo de contratación de talento                                                 |
 
 **Recomendación:** migrar de Vue SPA a **Nuxt 3** (mantiene Vue, Composition API y gran parte del código de UI actual) para obtener SSR/SSG en las páginas públicas (crítico para SEO del portfolio/catálogo) sin descartar la inversión ya hecha. Las áreas transaccionales (portal cliente/proveedor) pueden operar como SPA autenticado dentro del mismo framework.
 
 ### 13.2 Backend
-| Alternativa | Cuándo tiene sentido |
-|---|---|
-| Node.js (NestJS) | Continuidad de lenguaje con el frontend (TypeScript full-stack), buen soporte de arquitectura modular/hexagonal out-of-the-box |
+
+| Alternativa                                          | Cuándo tiene sentido                                                                                                               |
+| ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Node.js (NestJS)                                     | Continuidad de lenguaje con el frontend (TypeScript full-stack), buen soporte de arquitectura modular/hexagonal out-of-the-box     |
 | Backend gestionado (Supabase/Firebase-like) para MVP | Válido para Modo 1 (un proveedor) por velocidad, pero insuficiente para las reglas de negocio complejas del Escrow a mediano plazo |
-| Go | Mejor rendimiento y concurrencia para el núcleo de Escrow/pagos si se separa como servicio independiente |
-| Java/Kotlin (Spring) | Ecosistema maduro para sistemas financieros, mayor verbosidad y tiempo de desarrollo |
+| Go                                                   | Mejor rendimiento y concurrencia para el núcleo de Escrow/pagos si se separa como servicio independiente                           |
+| Java/Kotlin (Spring)                                 | Ecosistema maduro para sistemas financieros, mayor verbosidad y tiempo de desarrollo                                               |
 
 **Recomendación:** **NestJS (Node/TypeScript)** como backend principal para velocidad de desarrollo y coherencia de lenguaje con el frontend, con la opción de aislar el núcleo de Escrow como servicio independiente en un lenguaje con mejores garantías de concurrencia/tipado estricto (Go o Kotlin) si el volumen transaccional lo justifica más adelante. No se recomienda depender indefinidamente de un backend 100% gestionado (Supabase) para el núcleo financiero por la necesidad de lógica de negocio compleja, auditoría a medida y control fino de transacciones — sí se recomienda **reutilizar Supabase (Postgres gestionado + Auth) como punto de partida en Modo 1**, con camino de migración claro hacia infraestructura propia al escalar.
 
 ### 13.3 BFF / API Gateway
+
 Un **BFF por tipo de cliente** (web pública, portal autenticado, futura app móvil) reduce sobre-fetching y desacopla la evolución de UI del dominio. Un **API Gateway** (Kong, AWS API Gateway, o gestión propia sobre NestJS) centraliza autenticación, rate limiting y observabilidad para consumidores externos (partners, API pública).
 
 ### 13.4 Base de datos relacional
+
 **PostgreSQL** es la recomendación clara y sin alternativa igualmente justificada para el núcleo transaccional (Contratos, Escrow, Pagos): soporta transacciones ACID estrictas, extensiones maduras (particionamiento, `pgcrypto`, `pg_partman`), y es la base ya usada vía Supabase — continuidad tecnológica real.
 
 ### 13.5 Base documental / NoSQL
+
 MongoDB o DynamoDB para contenido semi-estructurado de alto volumen y bajo requerimiento transaccional: mensajería, logs de eventos de UI, borradores de propuestas generadas por IA. No debe usarse para datos financieros core.
 
 ### 13.6 Motor de búsqueda
+
 Meilisearch o Typesense para búsqueda rápida y tipográficamente tolerante del catálogo/portfolio/blog (más simple de operar); Elasticsearch/OpenSearch si se requiere búsqueda semántica avanzada combinada con analítica de logs a gran escala.
 
 ### 13.7 Cache
+
 Redis: cache de sesión, rate limiting, colas ligeras, y cache de resultados de catálogo/búsqueda.
 
 ### 13.8 Mensajería y eventos
+
 Para un **modelo dirigido por eventos** (recomendado, ver Sección 18): Apache Kafka si se anticipa alto volumen y necesidad de replay de eventos (auditoría de Escrow se beneficia de esto); RabbitMQ o un servicio gestionado (AWS SQS/SNS, Google Pub/Sub) si el volumen inicial no justifica operar Kafka. **Recomendación para el arranque:** cola gestionada (SQS/Pub/Sub) por menor costo operativo, con diseño de eventos ya preparado para migrar a Kafka si el volumen de auditoría/replay lo exige.
 
 ### 13.9 Object Storage y CDN
+
 S3-compatible (AWS S3, Cloudflare R2, Backblaze B2) para entregables y documentos, con cifrado en reposo y políticas de acceso firmadas (URLs temporales). CDN (Cloudflare, CloudFront) para activos públicos del portfolio/catálogo — ya alineado con el hosting estático actual en GitHub Pages, que debe evolucionar a un hosting con SSR (Vercel, Netlify Edge, o infraestructura propia) al adoptar Nuxt.
 
 ### 13.10 Contenedores y orquestación
+
 Contenedores (Docker) desde el día 1 para paridad dev/prod. Kubernetes se justifica solo a partir de un número de servicios y necesidad de autoscaling que un MVP no tiene: **recomendación de arranque** con plataformas gestionadas de contenedores (AWS ECS Fargate, Google Cloud Run) por menor sobrecarga operativa, migrando a Kubernetes (EKS/GKE) si la organización crece a un equipo de plataforma dedicado.
 
 ### 13.11 Cloud
+
 AWS, GCP y Azure son todos viables; **AWS** tiene la mayor madurez en servicios financieros/fintech de terceros (y el mayor ecosistema de partners de cumplimiento), lo que reduce fricción al integrar KYC/AML y PSPs. GCP es una alternativa válida si el equipo ya tiene experiencia previa o se prioriza su oferta de IA/BigQuery para analítica.
 
 ### 13.12 CI/CD
+
 GitHub Actions (continuidad con el repositorio ya en GitHub) para build/test/deploy; despliegues progresivos (canary/blue-green) para los servicios del núcleo de Escrow dado su criticidad.
 
 ### 13.13 Observabilidad
+
 OpenTelemetry como estándar de instrumentación (agnóstico de backend), con Grafana + Prometheus + Loki/Tempo (stack open-source, menor costo) o Datadog/New Relic (gestionado, menor esfuerzo operativo) según presupuesto y madurez del equipo de plataforma.
 
 ### 13.14 Infraestructura como código
+
 Terraform (multi-cloud, mayor portabilidad) frente a CloudFormation/CDK (nativo AWS, más integrado si se elige AWS de forma definitiva). **Recomendación:** Terraform, para no acoplar la infraestructura a un único proveedor mientras el modelo de negocio de custodia de fondos aún puede requerir cambiar de proveedor de infraestructura financiera.
 
 ### 13.15 Servicios administrados vs. propios
+
 Priorizar servicios administrados (bases de datos, colas, búsqueda, KYC, firma electrónica, PSP) en todo lo que no sea el diferenciador del producto. El diferenciador — la lógica de estados y reglas del Escrow — debe ser código propio, nunca delegado a un tercero como caja negra.
 
 ### 13.16 Integración con IA
+
 Arquitectura de IA desacoplada del núcleo transaccional: los modelos de lenguaje (vía proveedor de API, ej. Anthropic Claude) operan sobre una capa de servicios de IA que consulta el dominio pero no escribe directamente sobre el Escrow — toda acción de IA que afecte dinero o contratos pasa por la misma capa de validación y auditoría que una acción humana equivalente (principio de "IA como actor auditado", no como bypass).
 
 ---
@@ -652,20 +707,20 @@ Arquitectura de IA desacoplada del núcleo transaccional: los modelos de lenguaj
 
 ## 16. Riesgos
 
-| Categoría | Riesgo | Mitigación |
-|---|---|---|
-| Regulatorio | Custodiar fondos de terceros puede requerir licencia de dinero electrónico/EMI o asociación con entidad regulada, variable por país | Empezar con un PSP/Escrow-as-a-Service regulado como intermediario legal de los fondos (pass-through), evaluando licencia propia solo si el volumen lo justifica |
-| Financiero | Disputas mal resueltas erosionan confianza en ambos lados del marketplace | Reglas de Escrow transparentes desde la cotización, arbitraje con evidencia auditable, holdback de garantía |
-| Seguridad | El núcleo de Escrow es el objetivo de mayor valor para atacantes | Aislamiento del servicio de Escrow, auditoría inmutable, MFA obligatorio, revisión de seguridad periódica |
-| Fraude | Colusión cliente-proveedor para simular servicio y liberar fondos de tarjetas robadas ("lavado" vía marketplace) | KYC/KYB, límites de retiro, modelos de detección de patrones anómalos, retención inicial más larga para cuentas nuevas |
-| Operativo | Dependencia de terceros críticos (PSP, firma electrónica, KYC) | Diseño con capa de abstracción por integración para poder sustituir proveedor sin rediseño |
-| Escalabilidad | Picos de tráfico en el catálogo público no deben afectar la disponibilidad del núcleo financiero | Separación de dominios (Sección 18), escalado independiente por bounded context |
-| UX | Complejidad del proceso de Escrow puede generar fricción y abandono en clientes primerizos | Wizard guiado, simulación de desglose de hitos antes de comprometer el pago, soporte proactivo en el primer contrato |
-| Disponibilidad | Un incidente en el PSP externo bloquea nuevos depósitos/liberaciones | Colas con reintento y notificación de estado degradado, sin pérdida de eventos (outbox pattern) |
-| Dependencia de terceros | Cambios de términos/tarifas de PSPs o plataformas de IA afectan margen o funcionalidad | Contratos multi-proveedor donde sea viable (ej. dos PSPs), revisión periódica de términos |
-| Reputacional | Una disputa mal gestionada públicamente daña la marca de "plataforma de confianza" | Comunicación proactiva, SLA de resolución de disputas, canal de escalamiento claro |
-| Técnico | Acoplamiento excesivo entre Escrow y Proyectos puede dificultar evolución futura | Bounded contexts explícitos con contratos de eventos, no llamadas directas a base de datos entre dominios |
-| Privacidad | Manejo de datos de identidad (KYC) y financieros bajo múltiples jurisdicciones | Cifrado a nivel de campo, minimización de datos, política de retención por jurisdicción |
+| Categoría               | Riesgo                                                                                                                              | Mitigación                                                                                                                                                       |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Regulatorio             | Custodiar fondos de terceros puede requerir licencia de dinero electrónico/EMI o asociación con entidad regulada, variable por país | Empezar con un PSP/Escrow-as-a-Service regulado como intermediario legal de los fondos (pass-through), evaluando licencia propia solo si el volumen lo justifica |
+| Financiero              | Disputas mal resueltas erosionan confianza en ambos lados del marketplace                                                           | Reglas de Escrow transparentes desde la cotización, arbitraje con evidencia auditable, holdback de garantía                                                      |
+| Seguridad               | El núcleo de Escrow es el objetivo de mayor valor para atacantes                                                                    | Aislamiento del servicio de Escrow, auditoría inmutable, MFA obligatorio, revisión de seguridad periódica                                                        |
+| Fraude                  | Colusión cliente-proveedor para simular servicio y liberar fondos de tarjetas robadas ("lavado" vía marketplace)                    | KYC/KYB, límites de retiro, modelos de detección de patrones anómalos, retención inicial más larga para cuentas nuevas                                           |
+| Operativo               | Dependencia de terceros críticos (PSP, firma electrónica, KYC)                                                                      | Diseño con capa de abstracción por integración para poder sustituir proveedor sin rediseño                                                                       |
+| Escalabilidad           | Picos de tráfico en el catálogo público no deben afectar la disponibilidad del núcleo financiero                                    | Separación de dominios (Sección 18), escalado independiente por bounded context                                                                                  |
+| UX                      | Complejidad del proceso de Escrow puede generar fricción y abandono en clientes primerizos                                          | Wizard guiado, simulación de desglose de hitos antes de comprometer el pago, soporte proactivo en el primer contrato                                             |
+| Disponibilidad          | Un incidente en el PSP externo bloquea nuevos depósitos/liberaciones                                                                | Colas con reintento y notificación de estado degradado, sin pérdida de eventos (outbox pattern)                                                                  |
+| Dependencia de terceros | Cambios de términos/tarifas de PSPs o plataformas de IA afectan margen o funcionalidad                                              | Contratos multi-proveedor donde sea viable (ej. dos PSPs), revisión periódica de términos                                                                        |
+| Reputacional            | Una disputa mal gestionada públicamente daña la marca de "plataforma de confianza"                                                  | Comunicación proactiva, SLA de resolución de disputas, canal de escalamiento claro                                                                               |
+| Técnico                 | Acoplamiento excesivo entre Escrow y Proyectos puede dificultar evolución futura                                                    | Bounded contexts explícitos con contratos de eventos, no llamadas directas a base de datos entre dominios                                                        |
+| Privacidad              | Manejo de datos de identidad (KYC) y financieros bajo múltiples jurisdicciones                                                      | Cifrado a nivel de campo, minimización de datos, política de retención por jurisdicción                                                                          |
 
 ---
 
@@ -755,4 +810,4 @@ Prioridad: media-baja (crecimiento, no supervivencia). Complejidad: alta. Riesgo
 
 ---
 
-*Fin del documento maestro. Este documento debe usarse como insumo de entrada para: backlog priorizado, historias de usuario detalladas, diseño de arquitectura técnica detallada, diseño de API, modelo de datos físico, diseño de infraestructura, especificación de UI/UX, plan de pruebas e implementación.*
+_Fin del documento maestro. Este documento debe usarse como insumo de entrada para: backlog priorizado, historias de usuario detalladas, diseño de arquitectura técnica detallada, diseño de API, modelo de datos físico, diseño de infraestructura, especificación de UI/UX, plan de pruebas e implementación._
