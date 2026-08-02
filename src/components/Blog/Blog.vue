@@ -30,7 +30,7 @@
           :href="post.url"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-sm text-blue-600 underline"
+          class="text-sm text-blue-600 underline focus:outline-none focus:ring-2 focus:ring-dark rounded"
         >
           Leer más
         </a>

@@ -26,7 +26,7 @@
             :href="featured.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-blue-600 underline text-sm"
+            class="text-blue-600 underline text-sm focus:outline-none focus:ring-2 focus:ring-dark rounded"
           >
             Ver proyecto
           </a>
@@ -43,8 +43,12 @@
           <img
             :src="project.image"
             :alt="project.title"
-            class="w-full h-48 object-cover mb-4 cursor-pointer"
+            class="w-full h-48 object-cover mb-4 cursor-pointer focus:outline-none focus:ring-2 focus:ring-dark"
+            role="button"
+            tabindex="0"
             @click="setFeatured(project)"
+            @keyup.enter="setFeatured(project)"
+            @keyup.space="setFeatured(project)"
           />
 
           <h3 class="text-sm font-semibold mb-1">{{ project.title }}</h3>
@@ -55,7 +59,7 @@
             :href="project.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-block text-sm text-blue-600 underline"
+            class="inline-block text-sm text-blue-600 underline focus:outline-none focus:ring-2 focus:ring-dark rounded"
           >
             Ver proyecto
           </a>

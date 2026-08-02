@@ -35,10 +35,10 @@
     <div class="text-right">
         <h3 class="text-base font-semibold mb-2">Enlaces</h3>
         <ul class="space-y-1">
-          <li><a href="#inicio" class="hover:underline">Inicio</a></li>
-          <li><a href="#about" class="hover:underline">Sobre mí</a></li>
-          <li><a href="#project" class="hover:underline">Proyectos</a></li>
-          <li><a href="#contact" class="hover:underline">Contacto</a></li>
+          <li><a href="#inicio" class="hover:underline focus:outline-none focus:ring-2 focus:ring-dark rounded">Inicio</a></li>
+          <li><a href="#about" class="hover:underline focus:outline-none focus:ring-2 focus:ring-dark rounded">Sobre mí</a></li>
+          <li><a href="#project" class="hover:underline focus:outline-none focus:ring-2 focus:ring-dark rounded">Proyectos</a></li>
+          <li><a href="#contact" class="hover:underline focus:outline-none focus:ring-2 focus:ring-dark rounded">Contacto</a></li>
         </ul>
       </div>
     </div>

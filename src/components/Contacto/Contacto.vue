@@ -6,7 +6,7 @@
       <!-- Imagen -->
       <!-- TODO (Fase 0 pendiente): imagen real. Ver docs/IMPLEMENTATION_PLAN.md 1.7 -->
       <div>
-        <img src="" alt="Contacto" class="rounded shadow-lg" />
+        <img src="" alt="Ilustración de la sección de contacto" class="rounded shadow-lg" />
       </div>
       <!-- Formulario -->
       <div>
@@ -65,7 +65,7 @@
           </div>
           <button
             type="submit"
-            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Enviar
           </button>
