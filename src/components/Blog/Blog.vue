@@ -1,51 +1,76 @@
 <template>
-    <section class="py-12 bg-gray-100">
-        <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8 text-center">Blog</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div
-            v-for="post in posts"
-            :key="post.id"
-            class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300"
-            >
-            <h3 class="text-xl font-semibold mb-2">{{ post.title }}</h3>
-            <p class="text-gray-700 mb-4">{{ post.excerpt }}</p>
-            <a
-                :href="post.url"
-                target="_blank"
-                class="text-blue-600 hover:underline"
-            >Leer más</a>
-            </div>
+  <section class="p-6 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-semibold mb-6 border-b pb-2">Blog</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <article
+        v-for="post in posts"
+        :key="post.id"
+        class="border p-4 shadow-sm bg-white flex flex-col hover:shadow-lg transition-shadow duration-300"
+      >
+        <img
+          v-if="post.image"
+          :src="post.image"
+          :alt="post.title"
+          class="w-full h-40 object-cover mb-4 rounded"
+        />
+        <p v-if="post.date" class="text-xs text-gray-500 mb-1">{{ post.date }}</p>
+        <h3 class="text-lg font-semibold mb-2">{{ post.title }}</h3>
+        <div v-if="post.tags && post.tags.length" class="flex flex-wrap gap-1 mb-2">
+          <span
+            v-for="tag in post.tags"
+            :key="tag"
+            class="text-xs bg-gray text-dark px-2 py-0.5 rounded-full"
+          >
+            {{ tag }}
+          </span>
         </div>
-        </div>
-    </section>
+        <p class="text-sm text-gray-700 mb-4 flex-1">{{ post.excerpt }}</p>
+        <a
+          v-if="post.url"
+          :href="post.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-blue-600 underline"
+        >
+          Leer más
+        </a>
+        <span v-else class="text-sm text-gray-400 italic">Próximamente</span>
+      </article>
+    </div>
+  </section>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                posts: [
-                    {
-                        id: 1,
-                        title: 'Mi primer post en el blog',
-                        excerpt: 'Este es un resumen de mi primer post en el blog. Aquí hablo sobre mis experiencias como desarrollador frontend.',
-                        url: '#'
-                    },
-                    {
-                        id: 2,
-                        title: 'Aprendiendo Vue.js',
-                        excerpt: 'En este post comparto mis aprendizajes y recursos sobre Vue.js, un framework progresivo para construir interfaces de usuario.',
-                        url: '#'
-                    },
-                    {
-                        id: 3,
-                        title: 'Consejos para mejorar tu portafolio',
-                        excerpt: 'Aquí te doy algunos consejos prácticos para mejorar tu portafolio y atraer más clientes o empleadores.',
-                        url: '#'
-                    }
-                ]
-            };
-        }
-    };        
+// TODO (Fase 0 pendiente): reemplazar estos posts placeholder con contenido real (título,
+// resumen, fecha, etiquetas y el link donde publicaste cada uno — Medium, Dev.to,
+// LinkedIn, etc.). Mientras `url` sea null/vacío, la tarjeta muestra "Próximamente" en vez
+// de un link roto. Ver docs/IMPLEMENTATION_PLAN.md tarea 1.9 — decisión confirmada por el
+// usuario: mismo componente sin backend ni páginas internas de post, solo tarjetas que
+// enlazan a posts publicados en otro lado.
+export default {
+  data() {
+    return {
+      posts: [
+        {
+          id: 1,
+          title: 'Pendiente — título de tu primer post',
+          excerpt: 'Pendiente — resumen real de 1-2 frases sobre este post.',
+          date: null,
+          tags: [],
+          image: null,
+          url: null,
+        },
+        {
+          id: 2,
+          title: 'Pendiente — título de tu segundo post',
+          excerpt: 'Pendiente — resumen real de 1-2 frases sobre este post.',
+          date: null,
+          tags: [],
+          image: null,
+          url: null,
+        },
+      ],
+    }
+  },
+}
 </script>

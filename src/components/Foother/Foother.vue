@@ -6,6 +6,8 @@
       <h2 class="text-lg font-semibold">
         Portfolio de <span class="font-bold">Jair Flores</span>
       </h2>
+      <!-- TODO (Fase 0 pendiente): reemplazar por tus perfiles reales.
+           Ver docs/IMPLEMENTATION_PLAN.md 1.8 -->
       <div class="flex space-x-4 mt-2">
         <SocialIcon
           :icon="TwitterIcon"

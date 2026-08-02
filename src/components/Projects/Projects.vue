@@ -62,50 +62,14 @@
         </div>
       </div>
 
-      <!-- Formulario -->
-      <form @submit.prevent="addProject" class="bg-white p-6 rounded shadow space-y-4">
-        <input
-          v-model="newProject.title"
-          type="text"
-          placeholder="Título del proyecto"
-          class="w-full border p-2 rounded"
-          required
-        />
-
-        <input
-          v-model="newProject.image"
-          type="text"
-          placeholder="URL de la imagen"
-          class="w-full border p-2 rounded"
-          required
-        />
-
-        <textarea
-          v-model="newProject.description"
-          placeholder="Descripción"
-          class="w-full border p-2 rounded"
-          required
-        ></textarea>
-
-        <input
-          v-model="newProject.url"
-          type="url"
-          placeholder="URL del proyecto (https://...)"
-          class="w-full border p-2 rounded"
-        />
-
-        <button
-          type="submit"
-          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Añadir proyecto
-        </button>
-      </form>
     </div>
   </section>
 </template>
 
 <script>
+// TODO (Fase 0 pendiente): reemplazar este único proyecto de ejemplo con 2-4 proyectos
+// reales (nombre, descripción de tu rol específico, stack, link a demo/repo, captura real
+// en vez de picsum.photos). Ver docs/IMPLEMENTATION_PLAN.md tarea 1.5.
 export default {
   data() {
     return {
@@ -117,22 +81,10 @@ export default {
           url: "https://foodfinder-fjpa4w2uc-zped08s-projects.vercel.app/",
         },
       ],
-      newProject: {
-        title: "",
-        image: "https://picsum.photos/400/200?random",
-        description: "",
-        url: "",
-      },
       featured: null,
     };
   },
   methods: {
-    addProject() {
-      if (!this.newProject.title || !this.newProject.image || !this.newProject.description) return;
-
-      this.projects.push({ ...this.newProject });
-      this.newProject = { title: "", image: "", description: "", url: "" };
-    },
     setFeatured(project) {
       this.featured = project;
     },

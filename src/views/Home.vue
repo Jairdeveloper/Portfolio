@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <Hero id="portfolio"/>
+  <Hero id="inicio"/>
   <About id="about"/>
   <Blog />
   <Projects id="project"/> 

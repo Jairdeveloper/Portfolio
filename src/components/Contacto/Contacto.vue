@@ -4,6 +4,7 @@
     <h2 class="text-3xl font-semibold mb-6 border-b pb-2">Contacto</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <!-- Imagen -->
+      <!-- TODO (Fase 0 pendiente): imagen real. Ver docs/IMPLEMENTATION_PLAN.md 1.7 -->
       <div>
         <img src="" alt="Contacto" class="rounded shadow-lg" />
       </div>
@@ -11,6 +12,21 @@
       <div>
         <h3 class="text-2xl font-bold mb-4">Envíame un mensaje</h3>
         <form id="contact-form" @submit.prevent="handleSubmit" class="space-y-4">
+          <!-- Honeypot anti-spam: invisible para una persona real, pero los bots que
+               rellenan formularios automáticamente sí lo completan. Oculto con CSS
+               (no type="hidden", que los bots detectan fácil) y excluido de lectores de
+               pantalla y del tab de teclado. -->
+          <div class="hidden" aria-hidden="true">
+            <label for="empresa">Empresa</label>
+            <input
+              type="text"
+              id="empresa"
+              name="empresa"
+              v-model="form.empresa"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
             <input
@@ -71,29 +87,33 @@ export default {
       form: {
         name: '',
         email: '',
-        message: ''
+        message: '',
+        empresa: '' // honeypot: debe llegar siempre vacío en un envío real
       },
       successMessage: '',
       errorMessage: ''
     }
   },
   mounted() {
-    // Inicializar EmailJS con tu Public Key
-    emailjs.init('e3uPhfao4A6-lkdut') // Reemplaza con tu Public Key
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
   },
   methods: {
     async handleSubmit() {
+      if (this.form.empresa) {
+        // Un bot rellenó el campo honeypot: abortar en silencio, sin llamar a EmailJS.
+        return
+      }
       try {
         // Enviar el formulario usando EmailJS
         await emailjs.sendForm(
-          'service_se5o8vr', // Reemplaza con tu Service ID
-          'template_jbkzocd', // Reemplaza con tu Template ID
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
           document.getElementById('contact-form') // Referencia al formulario
         )
         // Mostrar mensaje de éxito
         this.successMessage = '¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.'
         this.errorMessage = ''
-        this.form = { name: '', email: '', message: '' }
+        this.form = { name: '', email: '', message: '', empresa: '' }
       } catch (error) {
         console.error('Error al enviar el mensaje:', error)
         this.successMessage = ''
