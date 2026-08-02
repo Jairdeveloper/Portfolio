@@ -4,3 +4,4 @@ CLAUDE.local.md
 .claude/settings.local.json
 notes.md
 .env
+dist/
