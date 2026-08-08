@@ -77,9 +77,12 @@ export default {
   name: 'AboutSection',
   data() {
     return {
-      experience: [{ role: 'Pendiente — añade tu experiencia real aquí', period: 'Pendiente' }],
-      education: [{ title: 'Pendiente — añade tu formación real aquí', period: 'Pendiente' }],
-      languages: [{ name: 'Inglés', level: 'nivel pendiente de definir' }],
+      experience: [
+        { role: 'Técnico en reparacion de celulares', period: '2015-2017' },
+        { role: 'Técnico en instalación de internet cable y telefono', period: '2013-2014' }
+      ],
+      education: [{ title: 'Bachiller en Ciencias', period: '2004-2009' }],
+      languages: [{ name: 'Inglés', level: 'Básico' }],
       skills: ['HTML5', 'CSS', 'JavaScript', 'Vue 3', 'Tailwind CSS'],
     }
   },
