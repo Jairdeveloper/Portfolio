@@ -79,7 +79,7 @@ export default {
     return {
       experience: [
         { role: 'Técnico en reparacion de celulares', period: '2015-2017' },
-        { role: 'Técnico en instalación de internet cable y telefono', period: '2013-2014' }
+        { role: 'Técnico en instalación y mantenimiento de internet, cable y telefono', period: '2013-2014' }
       ],
       education: [{ title: 'Bachiller en Ciencias', period: '2004-2009' }],
       languages: [{ name: 'Inglés', level: 'Básico' }],

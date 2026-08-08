@@ -26,7 +26,7 @@
     </div>
     <div>
       <!-- TODO (Fase 0 pendiente): foto/avatar real. Ver docs/IMPLEMENTATION_PLAN.md 1.7 -->
-      <img src="" alt="Foto de Jair Flores, desarrollador Frontend" />
+      <img src="src/assets/photo_2026-08-08_15-05-20.jpg" alt="Foto de Jair Flores, desarrollador de software" />
     </div>
   </section>
 </template>
