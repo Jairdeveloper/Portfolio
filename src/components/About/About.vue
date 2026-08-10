@@ -1,61 +1,88 @@
 <template>
-  <section>
-    <div class="p-8 max-w-5xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6 pb-2 border-b">Sobre mí</h2>
+  <section id="about" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Título -->
+      <div class="mb-12">
+        <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-2">Sobre mí</p>
+        <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight">Conóceme</h2>
+        <div class="mt-4 h-1 w-16 bg-gradient-to-r from-accent to-cyan-400 rounded-full"></div>
+      </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Experiencia Laboral -->
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-xl">💼</span>
-            <h3 class="text-lg font-semibold">EXPERIENCIA LABORAL</h3>
-          </div>
+        <div class="space-y-8">
+          <div class="bg-darkcard border border-darkborder rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-5">
+              <span
+                class="w-11 h-11 rounded-xl bg-accent/15 text-accent flex items-center justify-center"
+              >
+                <img :src="WorkIcon" alt="" class="w-5 h-5 brightness-0 invert opacity-90" />
+              </span>
+              <h3 class="font-semibold text-lg">Experiencia laboral</h3>
+            </div>
 
-          <div class="border-l-2 border-gray-300 pl-4 space-y-4">
-            <div v-for="(job, index) in experience" :key="index">
-              <p class="font-medium">{{ job.role }}</p>
-              <p class="text-sm text-gray-500">{{ job.period }}</p>
+            <div class="border-l-2 border-accent/40 pl-4 space-y-6">
+              <div v-for="(job, index) in experience" :key="index">
+                <p class="font-medium">{{ job.role }}</p>
+                <p class="text-sm text-gray-500">{{ job.period }}</p>
+              </div>
             </div>
           </div>
 
           <!-- Idiomas -->
-          <div class="mt-8">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="text-xl">🗣️</span>
-              <h3 class="text-lg font-semibold">IDIOMAS</h3>
+          <div class="bg-darkcard border border-darkborder rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-5">
+              <span
+                class="w-11 h-11 rounded-xl bg-accent/15 text-accent flex items-center justify-center"
+              >
+                <img :src="LanguageIcon" alt="" class="w-5 h-5 brightness-0 invert opacity-90" />
+              </span>
+              <h3 class="font-semibold text-lg">Idiomas</h3>
             </div>
-            <p v-for="(lang, index) in languages" :key="index">
-              {{ lang.name }} <span class="text-sm text-gray-500">— {{ lang.level }}</span>
-            </p>
+            <div class="space-y-3">
+              <p v-for="(lang, index) in languages" :key="index">
+                {{ lang.name }} <span class="text-sm text-gray-500">— {{ lang.level }}</span>
+              </p>
+            </div>
           </div>
         </div>
 
         <!-- Formación y habilidades -->
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-xl">🎓</span>
-            <h3 class="text-lg font-semibold">FORMACIÓN/ESTUDIOS</h3>
-          </div>
+        <div class="space-y-8">
+          <div class="bg-darkcard border border-darkborder rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-5">
+              <span
+                class="w-11 h-11 rounded-xl bg-accent/15 text-accent flex items-center justify-center"
+              >
+                <img :src="EducationIcon" alt="" class="w-5 h-5 brightness-0 invert opacity-90" />
+              </span>
+              <h3 class="font-semibold text-lg">Formación / Estudios</h3>
+            </div>
 
-          <div class="border-l-2 border-gray-300 pl-4 space-y-4">
-            <div v-for="(edu, index) in education" :key="index">
-              <p class="font-medium">{{ edu.title }}</p>
-              <p class="text-sm text-gray-500">{{ edu.period }}</p>
+            <div class="border-l-2 border-accent/40 pl-4 space-y-6">
+              <div v-for="(edu, index) in education" :key="index">
+                <p class="font-medium">{{ edu.title }}</p>
+                <p class="text-sm text-gray-500">{{ edu.period }}</p>
+              </div>
             </div>
           </div>
 
           <!-- Otras habilidades -->
-          <div class="mt-8">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="text-xl">📊</span>
-              <h3 class="text-lg font-semibold">OTRAS HABILIDADES</h3>
+          <div class="bg-darkcard border border-darkborder rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-5">
+              <span
+                class="w-11 h-11 rounded-xl bg-accent/15 text-accent flex items-center justify-center"
+              >
+                <img :src="SkillsIcon" alt="" class="w-5 h-5 brightness-0 invert opacity-90" />
+              </span>
+              <h3 class="font-semibold text-lg">Otras habilidades</h3>
             </div>
 
             <div class="flex flex-wrap gap-2">
               <span
                 v-for="skill in skills"
                 :key="skill"
-                class="inline-block bg-gray text-dark text-sm px-3 py-1 rounded-full"
+                class="inline-block bg-accent/10 text-accentlight border border-accent/30 text-sm px-4 py-1.5 rounded-full"
               >
                 {{ skill }}
               </span>
@@ -68,15 +95,19 @@
 </template>
 
 <script>
-// TODO (Fase 0 pendiente): reemplazar `experience`, `education` y `languages` con datos
-// reales (empleos, estudios/certificaciones, nivel real de idiomas). Ver
-// docs/IMPLEMENTATION_PLAN.md tarea 1.2. `skills` ya refleja tecnologías reales del stack
-// del proyecto (Fase 1: se reemplazaron las barras de progreso arbitrarias por una lista
-// simple, decisión confirmada por el usuario).
+import WorkIcon from '../../assets/icons/icon-work.svg'
+import LanguageIcon from '../../assets/icons/icon-language.svg'
+import EducationIcon from '../../assets/icons/icon-education.svg'
+import SkillsIcon from '../../assets/icons/icon-skills.svg'
+
 export default {
   name: 'AboutSection',
   data() {
     return {
+      WorkIcon,
+      LanguageIcon,
+      EducationIcon,
+      SkillsIcon,
       experience: [
         { role: 'Técnico en reparacion de celulares', period: '2015-2017' },
         { role: 'Técnico en instalación y mantenimiento de internet, cable y telefono', period: '2013-2014' }

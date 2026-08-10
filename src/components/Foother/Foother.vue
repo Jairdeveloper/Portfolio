@@ -1,61 +1,57 @@
 <template>
-  <footer class="px-6 border-t text-sm text-gray-800 max-w-5xl mx-auto py-8">
+  <footer class="px-6 border-t border-darkborder text-sm text-gray-400 max-w-6xl mx-auto py-10">
     <div
-      class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center space-y-6 md:space-y-0"
+      class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-6 md:space-y-0"
     >
       <div>
-        <!-- Parte izquierdo -->
-        <h2 class="text-lg font-semibold">
-          Portfolio de <span class="font-bold">Jair Flores</span>
+        <h2 class="text-lg font-display font-semibold text-lightgray">
+          Portfolio de <span class="text-accent font-bold">Jair Flores</span>
         </h2>
-        <!-- TODO (Fase 0 pendiente): reemplazar por tus perfiles reales.
-           Ver docs/IMPLEMENTATION_PLAN.md 1.8 -->
-        <div class="flex space-x-4 mt-2">
+        <p class="mt-1 text-gray-500">Desarrollador Frontend</p>
+        <div class="flex space-x-4 mt-4">
           <SocialIcon :icon="TwitterIcon" url="https://twitter.com" label="Twitter" />
           <SocialIcon :icon="GitHubIcon" url="https://github.com" label="GitHub" />
           <SocialIcon :icon="LinkedinIcon" url="https://linkedin.com" label="LinkedIn" />
         </div>
       </div>
 
-      <!-- Parte derecha -->
-
-      <!-- <p class="text-gray-600">© 2023 Jair Flores</p> -->
-
       <div class="text-right">
-        <h3 class="text-base font-semibold mb-2">Enlaces</h3>
+        <h3 class="text-base font-semibold mb-2 text-lightgray">Enlaces</h3>
         <ul class="space-y-1">
           <li>
             <a
               href="#inicio"
-              class="hover:underline focus:outline-none focus:ring-2 focus:ring-dark rounded"
+              class="hover:text-accentlight hover:underline underline-offset-4 transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded"
               >Inicio</a
             >
           </li>
           <li>
             <a
               href="#about"
-              class="hover:underline focus:outline-none focus:ring-2 focus:ring-dark rounded"
+              class="hover:text-accentlight hover:underline underline-offset-4 transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded"
               >Sobre mí</a
             >
           </li>
           <li>
             <a
               href="#project"
-              class="hover:underline focus:outline-none focus:ring-2 focus:ring-dark rounded"
+              class="hover:text-accentlight hover:underline underline-offset-4 transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded"
               >Proyectos</a
             >
           </li>
           <li>
             <a
               href="#contact"
-              class="hover:underline focus:outline-none focus:ring-2 focus:ring-dark rounded"
+              class="hover:text-accentlight hover:underline underline-offset-4 transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded"
               >Contacto</a
             >
           </li>
         </ul>
       </div>
     </div>
-    <p class="text-center text-gray-600 mt-6">© 2025 Jair Flores. Todos los derechos reservados.</p>
+    <p class="text-center text-gray-600 mt-8">
+      © 2025 Jair Flores. Todos los derechos reservados.
+    </p>
   </footer>
 </template>
 <script>
