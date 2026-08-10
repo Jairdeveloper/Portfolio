@@ -3,7 +3,7 @@
     <div class="max-w-6xl mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
         <a href="#inicio" class="font-display text-xl font-bold tracking-tight">
-          Jair<span class="text-accent">.</span>Flores
+          Jair<span class="text-accent"> </span>Flores
         </a>
 
         <!-- Nav de escritorio: siempre visible desde el breakpoint md hacia arriba -->

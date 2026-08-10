@@ -26,7 +26,7 @@
           <span class="text-gradient">Jair Flores</span>
         </h1>
         <p class="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed max-w-lg">
-          Desarrollador Frontend ayudándote a crear experiencias web únicas y a mejorar tu
+          Desarrollador de software ayudándote a crear experiencias web únicas y a mejorar tu
           presencia digital.
         </p>
 
