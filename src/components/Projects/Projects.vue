@@ -98,10 +98,33 @@
 </template>
 
 <script>
+import tiendaTelegramImage from '../../assets/01-home.png'
+
 export default {
   name: 'ProjectsSection',
   data() {
     const projects = [
+      {
+        title: 'Tienda Online Telegram',
+        image: tiendaTelegramImage,
+        description:
+          'Plataforma de e-commerce completa que opera dentro de Telegram: el cliente navega el catálogo, compra y paga desde una Mini App (WebView), con un bot conversacional como acompañamiento. Marketplace multi-vendedor con onboarding/KYC que resuelve el ciclo real de un pedido: pago con escrow retenido hasta la entrega verificada, liquidación a vendedores y devoluciones/RMA.',
+        url: 'https://staging.tiendajjonline.com',
+        tags: [
+          'React 19',
+          'TypeScript',
+          'NestJS 11',
+          'PostgreSQL',
+          'Prisma',
+          'Redis',
+          'Telegram Bot API',
+          'Docker',
+          'Stripe',
+          'TailwindCSS',
+          'TanStack Query',
+          'Playwright',
+        ],
+      },
       {
         title: 'Food finder',
         image: 'https://picsum.photos/400/200?random=1',
