@@ -26,8 +26,7 @@
           <span class="text-gradient">Jair Flores</span>
         </h1>
         <p class="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed max-w-lg">
-          Desarrollador de software ayudándote a crear experiencias web únicas y a mejorar tu
-          presencia digital.
+          Desarrollador de software te puedo ayudar a digitalizar tus ideas y convertirlas en experiencias únicas
         </p>
 
         <div class="flex flex-row flex-wrap items-center gap-4">
