@@ -37,7 +37,7 @@
             >Saber más</a
           >
           <a
-            href="Tech_Engineer_Resume_Template.pdf"
+            href="Tech_Resume_Jair.pdf"
             download="cvJairFlores.pdf"
             class="border border-darkborder text-lightgray px-7 py-3 rounded-lg font-medium hover:border-accent/60 hover:text-white hover:-translate-y-0.5 transition focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-dark"
             >Descargar CV</a
