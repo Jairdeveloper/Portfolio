@@ -271,14 +271,41 @@ en 0.2.
 | Deploy por push                     | run `45450574843` (correcto)                                          |
 | Deploy manual (`workflow_dispatch`) | run `45450743376` (correcto)                                          |
 | Artifact en `gh-pages`              | `index.html` con título y `noindex`; `404.html` presente; PDF ausente |
-| Verificación pública                | pendiente de expiración de `cache-control: max-age=600` del CDN       |
+| Verificación pública                | correcta tras expirar `cache-control: max-age=600` (aprox. 17:49Z)    |
+
+Comprobaciones finales en la URL pública (con parámetro anti-caché y Chrome headless):
+
+| URL                               | Resultado                                                                                                    |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `/Portfolio/`                     | `200`, título «Sitio en mantenimiento — Jair Flores», `noindex,nofollow`; solo el aviso, sin home ni footer. |
+| `/Portfolio/blog/`                | `404` de GitHub Pages, pero el cuerpo renderiza el aviso (gracias a `404.html`).                             |
+| `/Portfolio/Tech_Resume_Jair.pdf` | `404`.                                                                                                       |
+| `/Portfolio/index.html`           | `200`, mismo aviso (confirmación anticipada antes de que expirara la caché de `/`).                          |
+
+El push de Fase 3 (`11189d8`) **no** generó una ejecución nueva del workflow: la
+congelación quedó verificada.
+
+### Revisión semanal (Fase 4)
+
+Responsable: Jair. Revisar que `/Portfolio/` siga mostrando el aviso y que no aparezcan
+ejecuciones de deploy. Primera comprobación: 2026-11-24T17:49Z, correcta.
+
+### Notas para la Fase 5 (salida)
+
+1. Restaurar `on: push: branches: [main]` en `.github/workflows/deploy.yml`.
+2. Restaurar el script `deploy` en `package.json`.
+3. Restaurar `index.html`: título «Jair Flores — Desarrollador Frontend», descripción y
+   `og:*` originales («Portfolio de Jair Flores, desarrollador Frontend enfocado en Vue.js
+   y Tailwind CSS.») y quitar `<meta name="robots" ...>`.
+4. Poner `VITE_MAINTENANCE_MODE=false` y lanzar el workflow a mano. El PDF vuelve solo
+   (la eliminación es condicional) y `404.html` deja de generarse.
 
 ### Estado
 
 - [x] Fase 0 — decisiones tomadas con el operador.
 - [x] Fase 1 — vista, guard, workflow y variable en `false`; build verificado en ambos
       modos con navegador headless; ESLint limpio y Prettier limpio en archivos tocados.
-- [ ] Fase 2 — activación y artifact correctos; verificación pública pendiente de caché.
+- [x] Fase 2 — activación, artifact y verificación pública correctos.
 - [x] Fase 3 — trigger `push` eliminado y script `npm run deploy` retirado temporalmente;
       protección de `gh-pages` omitida por decisión del operador.
-- [ ] Fase 4 — seguimiento semanal.
+- [x] Fase 4 — verificación inicial completada; revisiones semanales a cargo de Jair.
