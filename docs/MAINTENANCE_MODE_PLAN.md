@@ -262,11 +262,23 @@ en 0.2.
 5. **Entorno:** el remoto SSH no autentica en esta sesión; los pushes se hacen por HTTPS
    usando la credencial de `gh` (permiso ADMIN verificado).
 
+### Activación (Fase 2)
+
+| Dato                                | Valor                                                                 |
+| ----------------------------------- | --------------------------------------------------------------------- |
+| Variable `VITE_MAINTENANCE_MODE`    | `true` desde 2026-11-24T17:36:36Z                                     |
+| Commit activo                       | `ebab6ed` — metadatos de mantenimiento en `index.html`                |
+| Deploy por push                     | run `45450574843` (correcto)                                          |
+| Deploy manual (`workflow_dispatch`) | run `45450743376` (correcto)                                          |
+| Artifact en `gh-pages`              | `index.html` con título y `noindex`; `404.html` presente; PDF ausente |
+| Verificación pública                | pendiente de expiración de `cache-control: max-age=600` del CDN       |
+
 ### Estado
 
 - [x] Fase 0 — decisiones tomadas con el operador.
 - [x] Fase 1 — vista, guard, workflow y variable en `false`; build verificado en ambos
       modos con navegador headless; ESLint limpio y Prettier limpio en archivos tocados.
-- [ ] Fase 2 — activación, deploy y verificación pública.
-- [ ] Fase 3 — congelación del trigger `push`.
+- [ ] Fase 2 — activación y artifact correctos; verificación pública pendiente de caché.
+- [x] Fase 3 — trigger `push` eliminado y script `npm run deploy` retirado temporalmente;
+      protección de `gh-pages` omitida por decisión del operador.
 - [ ] Fase 4 — seguimiento semanal.
