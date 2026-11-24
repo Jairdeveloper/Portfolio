@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -30,7 +31,14 @@ jobs:
         run: npm ci
 
       - name: Build project
-        run: npm run build
+        env:
+          VITE_MAINTENANCE_MODE: ${{ vars.VITE_MAINTENANCE_MODE }}
+        run: |
+          npm run build
+          if [ "$VITE_MAINTENANCE_MODE" = "true" ]; then
+            cp dist/index.html dist/404.html
+            rm -f dist/Tech_Resume_Jair.pdf
+          fi
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
